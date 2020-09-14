@@ -9,5 +9,13 @@ npm-debug.*
 *.orig.*
 web-build/
 
-# macOS
+# Editors
+.idea
+*.iml
+.vscode
+
+# misc
 .DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
