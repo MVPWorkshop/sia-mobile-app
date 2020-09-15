@@ -1,9 +1,11 @@
 import React from 'react'
-import { Button, Text } from 'react-native';
+import { Button, Image, Text } from 'react-native';
 import { ERouterFlows, ERouterScreens, RouterScreenProps } from '../../../shared/types/router.types';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../../redux/auth/auth.redux.actions';
 import ScreenLayout from '../../layouts/ScreenLayout/screenLayout';
+import { EPoppins } from '../../../shared/hooks/usePoppins.hook';
+import { Images } from '../../../shared/constants/images.constants';
 
 const LoginScreen: React.FC<RouterScreenProps.ILoginScreenProps> = (props) => {
 
@@ -26,7 +28,10 @@ const LoginScreen: React.FC<RouterScreenProps.ILoginScreenProps> = (props) => {
         title={'Login'}
         onPress={handleLogin}
       />
-      <Text>Login screen</Text>
+      <Image source={Images.logo} />
+      <Text style={{
+        fontFamily: EPoppins.Regular
+      }}>Login screen</Text>
     </ScreenLayout>
   )
 }
