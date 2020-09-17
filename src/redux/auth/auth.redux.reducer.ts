@@ -14,7 +14,7 @@ const initialState: IAuthReduxReducerState = {
     addressPostalCode: '90002'
   },
   isVerified: false,
-  isAuthenticated: false
+  isAuthenticated: true
 }
 
 const AuthReduxReducer: Reducer<IAuthReduxReducerState, AuthReduxActions> = (state = initialState, action) => {

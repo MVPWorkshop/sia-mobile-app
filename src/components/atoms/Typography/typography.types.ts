@@ -8,7 +8,7 @@ export type EFontFamily =
 export interface ITypographyProps {
   fontSize?: number;
   fontFamily?: EFontFamily;
-  color?: EAccents | EColors;
+  color?: EAccents | EColors | string;
   style?: StyleProp<TextStyle>;
   textProps?: TextProps;
 }

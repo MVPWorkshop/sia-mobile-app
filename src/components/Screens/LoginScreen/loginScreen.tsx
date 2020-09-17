@@ -27,8 +27,14 @@ const LoginScreen: React.FC<RouterScreenProps.ILoginScreenProps> = (props) => {
       lastName: 'Test',
       firstName: 'Test'
     }))
-    props.navigation.replace(ERouterFlows.HomeFlow, {
-      screen: ERouterScreens.ActionsScreen
+    props.navigation.replace(ERouterFlows.HomeDrawer, {
+      screen: ERouterFlows.HomeFlow,
+      params: {
+        screen: ERouterFlows.HomeActionsFlow,
+        params: {
+          screen: ERouterScreens.ActionsScreen
+        }
+      }
     })
   }
 

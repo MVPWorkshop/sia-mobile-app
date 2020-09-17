@@ -1,9 +1,11 @@
-import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import { BottomTabNavigationOptions, BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { StackScreenProps } from '@react-navigation/stack';
 
 export enum ERouterFlows {
   AuthFlow = 'AuthFlow',
-  HomeFlow = 'HomeFlow'
+  HomeDrawer = 'HomeDrawer',
+  HomeFlow = 'HomeFlow',
+  HomeActionsFlow = 'HomeActionsFlow'
 }
 
 export enum ERouterScreens {
@@ -14,6 +16,8 @@ export enum ERouterScreens {
   WalletScreen = 'WalletScreen',
   VerifyAccountScreen = 'VerifyAccountScreen'
 }
+
+export type RouteName = ERouterFlows | ERouterScreens;
 
 type NestedNavigatorParams<ParamList> = {
   [K in keyof ParamList]: undefined extends ParamList[K]
@@ -26,10 +30,14 @@ export type IRouteParams = {
     [ERouterScreens.LoginScreen]: undefined;
     [ERouterScreens.RegisterScreen]: undefined;
   }>;
-  [ERouterFlows.HomeFlow]: NestedNavigatorParams<{
-    [ERouterScreens.ActionsScreen]: undefined;
-    [ERouterScreens.TasksScreen]: undefined;
-    [ERouterScreens.WalletScreen]: undefined;
+  [ERouterFlows.HomeDrawer]: NestedNavigatorParams<{
+    [ERouterFlows.HomeFlow]: NestedNavigatorParams<{
+      [ERouterFlows.HomeActionsFlow]: NestedNavigatorParams<{
+        [ERouterScreens.ActionsScreen]: undefined
+      }>;
+      [ERouterScreens.TasksScreen]: undefined;
+      [ERouterScreens.WalletScreen]: undefined;
+    }>;
   }>;
   [ERouterScreens.VerifyAccountScreen]: {
     onFinishRoute: {
@@ -45,9 +53,9 @@ export declare namespace RouterScreenProps {
   interface IRegisterScreenProps extends StackScreenProps<IRouteParams, ERouterFlows.AuthFlow> {}
 
   // Home flow
-  interface IActionsScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeFlow> {}
-  interface ITasksScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeFlow> {}
-  interface IWalletScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeFlow> {}
+  interface IActionsScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
+  interface ITasksScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
+  interface IWalletScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
 
   // Verify flow
   interface IVerifyAccountScreenProps extends StackScreenProps<IRouteParams, ERouterScreens.VerifyAccountScreen> {}

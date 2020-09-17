@@ -14,7 +14,7 @@ const ScreenLayout: React.FC<IScreenLayoutProps> = (props) => {
     style,
     keyboardAvoiding = false,
     statusBarColor,
-    bgColor = EColors.WHITE
+    bgColor = EColors.GRAYISH_BLUE
   } = props;
 
   const renderSafeArea = (children: JSX.Element) => {

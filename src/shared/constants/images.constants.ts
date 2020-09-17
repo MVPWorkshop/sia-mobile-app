@@ -11,6 +11,9 @@ const images = {
   verifyAccountLocationImg: require('../../../assets/verify_account_location_img.png'),
   verifyAccountPersonalInfoImg: require('../../../assets/verify_account_personal_info_img.png'),
   verifyAccountIdImg: require('../../../assets/verify_account_id_img.png'),
+
+  hamburger: require('../../../assets/hamburger.png'),
+  search: require('../../../assets/search.png'),
 }
 
 export type ImageKeys = keyof typeof images;

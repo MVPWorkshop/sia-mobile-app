@@ -17,7 +17,10 @@ const Typography: React.FC<ITypographyProps> = (props) => {
   const typographyStyle: TextStyle = {
     fontFamily,
     fontSize,
-    color: colors[color as EColors] || accentColor[color as EAccents]
+    color:
+      colors[color as EColors] ||
+      accentColor[color as EAccents] ||
+      color
   }
 
   return (

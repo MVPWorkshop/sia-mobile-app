@@ -60,8 +60,14 @@ const RegisterScreen: React.FC<RouterScreenProps.IRegisterScreenProps> = (props)
     }))
     dispatch(toggleIsAuthenticated(true))
 
-    props.navigation.replace(ERouterFlows.HomeFlow, {
-      screen: ERouterScreens.ActionsScreen
+    props.navigation.replace(ERouterFlows.HomeDrawer, {
+      screen: ERouterFlows.HomeFlow,
+      params: {
+        screen: ERouterFlows.HomeActionsFlow,
+        params: {
+          screen: ERouterScreens.ActionsScreen
+        }
+      }
     })
   }
 
@@ -239,7 +245,7 @@ const RegisterScreen: React.FC<RouterScreenProps.IRegisterScreenProps> = (props)
     // @TODO Verify account flow
     props.navigation.navigate(ERouterScreens.VerifyAccountScreen, {
       onFinishRoute: {
-        routeName: ERouterFlows.HomeFlow
+        routeName: ERouterFlows.HomeDrawer
       }
     })
   }
