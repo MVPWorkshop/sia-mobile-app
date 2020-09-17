@@ -10,6 +10,7 @@
     "strict": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "isolatedModules": true
+    "isolatedModules": true,
+    "target": "es5"
   }
 }

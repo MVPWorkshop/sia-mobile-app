@@ -5,7 +5,7 @@ export interface IUser {
   addressCountry?: string;
   addressCity?: string;
   addressPostalCode?: string;
-  addressNumber?: string;
+  addressStreet?: string;
   profession?: string;
   phoneNumber?: string;
   birthDateTimestamp?: number;

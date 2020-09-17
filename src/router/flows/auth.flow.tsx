@@ -9,7 +9,7 @@ import { ERouterScreens } from '../../shared/types/router.types';
 const AuthFlowStack = createStackNavigator();
 
 const AuthFlow = () => {
-  const isLoggedIn = useSelector<RootState, boolean>(state => !!state.auth.user);
+  const isLoggedIn = useSelector<RootState, boolean>(state => state.auth.isAuthenticated);
 
   if (isLoggedIn) {
     return null;
@@ -17,8 +17,16 @@ const AuthFlow = () => {
 
   return (
     <AuthFlowStack.Navigator initialRouteName={ERouterScreens.LoginScreen}>
-      <AuthFlowStack.Screen name={ERouterScreens.LoginScreen} component={LoginScreen} />
-      <AuthFlowStack.Screen name={ERouterScreens.RegisterScreen} component={RegisterScreen} />
+      <AuthFlowStack.Screen
+        name={ERouterScreens.LoginScreen}
+        component={LoginScreen}
+        options={{headerShown: false}}
+      />
+      <AuthFlowStack.Screen
+        name={ERouterScreens.RegisterScreen}
+        component={RegisterScreen}
+        options={{headerShown: false}}
+      />
     </AuthFlowStack.Navigator>
   )
 }

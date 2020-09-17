@@ -11,7 +11,8 @@ export enum ERouterScreens {
   LoginScreen = 'LoginScreen',
   RegisterScreen = 'RegisterScreen',
   TasksScreen = 'TasksScreen',
-  WalletScreen = 'WalletScreen'
+  WalletScreen = 'WalletScreen',
+  VerifyAccountScreen = 'VerifyAccountScreen'
 }
 
 type NestedNavigatorParams<ParamList> = {
@@ -30,6 +31,12 @@ export type IRouteParams = {
     [ERouterScreens.TasksScreen]: undefined;
     [ERouterScreens.WalletScreen]: undefined;
   }>;
+  [ERouterScreens.VerifyAccountScreen]: {
+    onFinishRoute: {
+      routeName: keyof IRouteParams;
+      params?: any;
+    }
+  }
 }
 
 export declare namespace RouterScreenProps {
@@ -41,4 +48,7 @@ export declare namespace RouterScreenProps {
   interface IActionsScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeFlow> {}
   interface ITasksScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeFlow> {}
   interface IWalletScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeFlow> {}
+
+  // Verify flow
+  interface IVerifyAccountScreenProps extends StackScreenProps<IRouteParams, ERouterScreens.VerifyAccountScreen> {}
 }

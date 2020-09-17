@@ -11,8 +11,10 @@ export enum EColors {
   GRAY = 'GRAY',
   GRAY_LIGHTER = 'GRAY_LIGHTER',
   GRAY_DARKER = 'GRAY_DARKER',
+  GRAY_DARKEST = 'GRAY_DARKEST',
   WHITE = 'WHITE',
   RED = 'RED',
+  GRAYISH_BLUE = 'GRAYISH_BLUE'
 }
 
 export const colors: DynamicObject<string, EColors, AllKeysRequired> = {
@@ -21,13 +23,15 @@ export const colors: DynamicObject<string, EColors, AllKeysRequired> = {
   BLUE_LIGHTER: '#F1FCFF',
   GRAY: '#DCDCDC',
   GRAY_DARKER: '#CBCBCB',
+  GRAY_DARKEST: '#A8AAAA',
   GRAY_LIGHTER: '#F6F6F6',
   GREEN: '#00AE91',
   GREEN_LIGHTER: '#F4FFF1',
   PINK: '#F98AEB',
   PINK_LIGHTER: '#FDEDFB',
   RED: '#ED4848',
-  WHITE: '#FFFFFF'
+  WHITE: '#FFFFFF',
+  GRAYISH_BLUE: '#FBFEFF'
 }
 
 export enum EAccents {
@@ -43,3 +47,5 @@ export const accentColor: DynamicObject<string, EAccents, AllKeysRequired> = {
   PRIMARY: colors.BLUE,
   SUCCESS: colors.GREEN
 }
+
+export const defaultFontSize = 16;
