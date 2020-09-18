@@ -13,8 +13,7 @@ export const getTabBarIcon = (iconMap: TabIconNameMap, routeName: RouteName): Ge
   const tabIconName = iconMap[routeName]!;
   const {
     color,
-    focused,
-    size
+    focused
   } = props;
 
   return (
@@ -22,7 +21,7 @@ export const getTabBarIcon = (iconMap: TabIconNameMap, routeName: RouteName): Ge
       name={focused ? tabIconName.focused.iconName : tabIconName.idle.iconName}
       type={focused ? tabIconName.focused.iconType : tabIconName.idle.iconType}
       color={color}
-      size={size}
+      size={18}
     />
   )
 }

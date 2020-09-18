@@ -5,7 +5,7 @@ import { Images } from '../../../shared/constants/images.constants';
 import styles from './appHeader.styles';
 import { StackHeaderProps } from '@react-navigation/stack';
 import { EButtonType } from '../../atoms/Button/button.types';
-import { NavigationContainer, DrawerActions } from '@react-navigation/native';
+import { DrawerActions } from '@react-navigation/native';
 
 const AppHeader: React.FC<StackHeaderProps> = (props) => {
 
@@ -18,28 +18,30 @@ const AppHeader: React.FC<StackHeaderProps> = (props) => {
   }
 
   return (
-    <View style={[styles.appHeader, {paddingTop: insets.top}]}>
-      <Button
-        onClick={openDrawer}
-        type={EButtonType.FLAT}
-      >
-        <Image
-          source={Images.hamburger}
-          style={styles.imgHamburger}
-        />
-      </Button>
+    <View>
+      <View style={[styles.appHeader, {paddingTop: insets.top}]}>
+        <Button
+          onClick={openDrawer}
+          type={EButtonType.FLAT}
+        >
+          <Image
+            source={Images.hamburger}
+            style={styles.imgHamburger}
+          />
+        </Button>
 
-      <Image source={Images.logo} style={styles.imgLogo}/>
+        <Image source={Images.logo} style={styles.imgLogo}/>
 
-      <Button
-        onClick={() => {}}
-        type={EButtonType.FLAT}
-      >
-        <Image
-          source={Images.search}
-          style={styles.imgSearch}
-        />
-      </Button>
+        <Button
+          onClick={() => {}}
+          type={EButtonType.FLAT}
+        >
+          <Image
+            source={Images.search}
+            style={styles.imgSearch}
+          />
+        </Button>
+      </View>
     </View>
   )
 }

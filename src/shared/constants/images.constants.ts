@@ -14,6 +14,9 @@ const images = {
 
   hamburger: require('../../../assets/hamburger.png'),
   search: require('../../../assets/search.png'),
+
+  volunteerActionNgoAccountingImg: require('../../../assets/help_ngo_cover_img.png'),
+  volunteerActionRecreationalImg: require('../../../assets/recreational_activities_cover_img.png'),
 }
 
 export type ImageKeys = keyof typeof images;

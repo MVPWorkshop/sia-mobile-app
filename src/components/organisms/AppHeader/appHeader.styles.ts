@@ -2,13 +2,13 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   appHeader: {
-    backgroundColor: 'transparent',
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 16,
-    paddingVertical: 8
+    paddingVertical: 8,
+    elevation: 8
   },
   imgHamburger: {
     width: 21,
