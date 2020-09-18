@@ -12,6 +12,7 @@ import { EPoppins } from '../../../shared/hooks/usePoppins.hook';
 import Circle from '../../atoms/Circle/circle';
 import Button from '../../atoms/Button/button';
 import { EButtonType } from '../../atoms/Button/button.types';
+import ChipGroup from '../ChipGroup/chipGroup';
 
 const VolunteerActionPreview: React.FC<IVolunteerActionPreviewProps> = (props) => {
 
@@ -28,13 +29,9 @@ const VolunteerActionPreview: React.FC<IVolunteerActionPreviewProps> = (props) =
     tasks
   } = props.action;
 
-  const openDetails = () => {
-    console.log('Details opened for ' + name)
-  }
-
   return (
     <View style={[styles.volunteerActionPreview, props.style]}>
-      <Button onClick={openDetails} type={EButtonType.FLAT} style={{flex: 1}} removePadding={true}>
+      <Button onClick={props.onClick} type={EButtonType.FLAT} style={{flex: 1}} removePadding={true}>
         <View style={{flex: 1, padding: 16}}>
           <VolunteerActionHeader
             name={name}
@@ -44,7 +41,7 @@ const VolunteerActionPreview: React.FC<IVolunteerActionPreviewProps> = (props) =
             organizer={organizer}
             style={mb(6)}
           />
-          <View style={styles.chipContainer}>
+          <ChipGroup>
             <Chip
               chipIconProps={{
                 name: 'refresh-ccw',
@@ -53,11 +50,9 @@ const VolunteerActionPreview: React.FC<IVolunteerActionPreviewProps> = (props) =
               body={{
                 text: isRecurring ? 'Recurring action' : 'Non recurring action'
               }}
-              style={[{flex: 1}, mr(2)]}
             />
             <Chip
               backgroundColor={EColors.PINK_LIGHTER}
-              style={{flex: 1}}
               chipIconProps={{
                 name: 'calendar',
                 type: 'feather',
@@ -70,7 +65,7 @@ const VolunteerActionPreview: React.FC<IVolunteerActionPreviewProps> = (props) =
                 ].join('\n')
               }}
             />
-          </View>
+          </ChipGroup>
           <Typography
             color={EColors.GRAY_DARKEST}
             fontSize={15}
