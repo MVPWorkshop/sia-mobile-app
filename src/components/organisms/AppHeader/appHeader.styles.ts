@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '../../../shared/styles/variables.styles';
 
 const styles = StyleSheet.create({
   appHeader: {
@@ -24,6 +25,15 @@ const styles = StyleSheet.create({
     width: 50,
     height: 30,
     resizeMode: 'contain'
+  },
+  userVerificationBanner: {
+    backgroundColor: colors.BLUE_LIGHTER,
+    width: '100%',
+    paddingVertical: 20,
+    paddingHorizontal: 4,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });
 

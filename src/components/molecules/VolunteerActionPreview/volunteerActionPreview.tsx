@@ -34,7 +34,7 @@ const VolunteerActionPreview: React.FC<IVolunteerActionPreviewProps> = (props) =
 
   return (
     <View style={[styles.volunteerActionPreview, props.style]}>
-      <Button onClick={openDetails} type={EButtonType.FLAT} style={{padding: 0, flex: 1}}>
+      <Button onClick={openDetails} type={EButtonType.FLAT} style={{flex: 1}} removePadding={true}>
         <View style={{flex: 1, padding: 16}}>
           <VolunteerActionHeader
             name={name}

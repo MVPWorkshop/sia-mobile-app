@@ -24,4 +24,5 @@ export interface IButtonProps {
     name: IconProps['name'],
     type: IconProps['type']
   };
+  removePadding?: boolean;
 }

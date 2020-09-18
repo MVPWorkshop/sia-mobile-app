@@ -36,7 +36,8 @@ const Button: React.FC<IButtonProps> = (props) => {
     labelColor,
     iconLeft,
     iconRight,
-    labelStyle
+    labelStyle,
+    removePadding
   } = props;
 
   const isDisabled = disabled || loading;
@@ -57,6 +58,12 @@ const Button: React.FC<IButtonProps> = (props) => {
       buttonStyle.push(styles.buttonFlat);
     } else if (type === EButtonType.OUTLINED) {
       buttonStyle.push(styles.buttonOutlined)
+    }
+
+    if (removePadding) {
+      buttonStyle.push({
+        padding: 0
+      })
     }
 
     if (isDisabled) {
