@@ -14,7 +14,8 @@ export enum EColors {
   GRAY_DARKEST = 'GRAY_DARKEST',
   WHITE = 'WHITE',
   RED = 'RED',
-  GRAYISH_BLUE = 'GRAYISH_BLUE'
+  GRAYISH_BLUE = 'GRAYISH_BLUE',
+  TRANSPARENT = 'TRANSPARENT'
 }
 
 export const colors: DynamicObject<string, EColors, AllKeysRequired> = {
@@ -31,7 +32,8 @@ export const colors: DynamicObject<string, EColors, AllKeysRequired> = {
   PINK_LIGHTER: '#FDEDFB',
   RED: '#ED4848',
   WHITE: '#FFFFFF',
-  GRAYISH_BLUE: '#FBFEFF'
+  GRAYISH_BLUE: '#FBFEFF',
+  TRANSPARENT: 'transparent'
 }
 
 export enum EAccents {

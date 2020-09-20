@@ -1,6 +1,6 @@
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { StackScreenProps } from '@react-navigation/stack';
-import { IVolunteerAction } from './aidProject.types';
+import { IVolunteerAction, IVolunteerTask } from './aidProject.types';
 
 export enum ERouterFlows {
   AuthFlow = 'AuthFlow',
@@ -12,6 +12,7 @@ export enum ERouterFlows {
 export enum ERouterScreens {
   ActionsScreen = 'ActionsScreen',
   ActionDetailsScreen = 'ActionDetailsScreen',
+  TaskDetailsScreen = 'TaskDetailsScreen',
   LoginScreen = 'LoginScreen',
   RegisterScreen = 'RegisterScreen',
   TasksScreen = 'TasksScreen',
@@ -39,6 +40,11 @@ export type IRouteParams = {
         [ERouterScreens.ActionDetailsScreen]: {
           volunteerAction: IVolunteerAction;
         };
+        [ERouterScreens.TaskDetailsScreen]: {
+          volunteerTask: IVolunteerTask;
+          volunteerAction: IVolunteerAction;
+          taskName: string;
+        }
       }>;
       [ERouterScreens.TasksScreen]: undefined;
       [ERouterScreens.WalletScreen]: undefined;
@@ -60,6 +66,7 @@ export declare namespace RouterScreenProps {
   // Home actions flow
   interface IActionsScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
   interface IActionDetailsScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
+  interface ITaskDetailsScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
 
   interface ITasksScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
   interface IWalletScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}

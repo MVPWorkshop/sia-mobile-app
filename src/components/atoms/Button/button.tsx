@@ -38,7 +38,8 @@ const Button: React.FC<IButtonProps> = (props) => {
     iconLeft,
     iconRight,
     labelStyle,
-    removePadding
+    removePadding,
+    extend
   } = props;
 
   const isDisabled = disabled || loading;
@@ -64,6 +65,12 @@ const Button: React.FC<IButtonProps> = (props) => {
     if (removePadding) {
       buttonStyle.push({
         padding: 0
+      })
+    }
+
+    if (extend) {
+      buttonStyle.push({
+        width: '100%'
       })
     }
 

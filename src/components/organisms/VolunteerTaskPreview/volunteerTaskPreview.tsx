@@ -103,19 +103,19 @@ const VolunteerTaskPreview: React.FC<IVolunteerTaskPreviewProps> = (props) => {
     dateChipText.push(`${endDate.day()}, ${endDate.format('MMMM')}`);
   }
 
-  const applyToTask = (taskId: string) => () => {
+  const applyToTask = () => {
     if (task.status !== EVolunteerTaskStatus.NEUTRAL) {
       return;
     }
 
-    dispatch(updateVolunteerTask(taskId, {
+    dispatch(updateVolunteerTask(task.id, {
       status: EVolunteerTaskStatus.APPLIED
     }))
   }
 
   return (
     <View style={[styles.volunteerTaskPreview, props.style]}>
-      <Button type={EButtonType.FLAT} removePadding={true} onClick={() => {}}>
+      <Button type={EButtonType.FLAT} removePadding={true} onClick={props.onClick}>
         <View style={styles.contentContainer}>
           <Typography fontSize={14} color={EColors.GRAY_DARKER}>
             {cardTitle}
@@ -147,7 +147,7 @@ const VolunteerTaskPreview: React.FC<IVolunteerTaskPreviewProps> = (props) => {
             {task.description}
           </Typography>
           <Button
-            onClick={applyToTask(task.id)}
+            onClick={applyToTask}
             iconRight={isTaskPositive ? {
               name: 'check',
               type: 'feather',

@@ -17,6 +17,8 @@ const images = {
 
   volunteerActionNgoAccountingImg: require('../../../assets/help_ngo_cover_img.png'),
   volunteerActionRecreationalImg: require('../../../assets/recreational_activities_cover_img.png'),
+
+  qrCode: require('../../../assets/qrCode.png'),
 }
 
 export type ImageKeys = keyof typeof images;

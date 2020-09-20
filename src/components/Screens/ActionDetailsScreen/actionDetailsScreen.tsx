@@ -1,8 +1,8 @@
 import React from 'react';
 import ScreenLayout from '../../layouts/ScreenLayout/screenLayout';
-import { RouterScreenProps } from '../../../shared/types/router.types';
+import { ERouterFlows, ERouterScreens, RouterScreenProps } from '../../../shared/types/router.types';
 import VolunteerActionHeader from '../../atoms/VolunteerActionHeader/volunteerActionHeader';
-import { IVolunteerAction } from '../../../shared/types/aidProject.types';
+import { IVolunteerAction, IVolunteerTask } from '../../../shared/types/aidProject.types';
 import Typography from '../../atoms/Typography/typography';
 import { colors, EColors } from '../../../shared/styles/variables.styles';
 import { View } from 'react-native';
@@ -36,6 +36,18 @@ const ActionDetailsScreen: React.FC<RouterScreenProps.IActionDetailsScreenProps>
   if (!action) {
     navigation.goBack();
     return null;
+  }
+
+  const openTaskDetails = (volunteerTask: IVolunteerTask, taskName: string) => () => {
+    // @ts-ignore
+    props.navigation.navigate(ERouterFlows.HomeActionsFlow, {
+      screen: ERouterScreens.TaskDetailsScreen,
+      params: {
+        volunteerTask,
+        volunteerAction: action,
+        taskName
+      }
+    })
   }
 
   const startDate = moment.unix(action.startDateTimestamp);
@@ -163,6 +175,7 @@ const ActionDetailsScreen: React.FC<RouterScreenProps.IActionDetailsScreenProps>
         action.tasks.map((taskId, index) => (
           <VolunteerTaskPreview
             key={taskId}
+            onClick={openTaskDetails(tasks[taskId], `Task ${index + 1}`)}
             cardTitle={`Task ${index + 1}`}
             task={tasks[taskId]}
             style={mt(4)}
