@@ -6,7 +6,7 @@ import { IVolunteerAction } from '../../../shared/types/aidProject.types';
 import Typography from '../../atoms/Typography/typography';
 import { colors, EColors } from '../../../shared/styles/variables.styles';
 import { View } from 'react-native';
-import { mb } from '../../../shared/styles/util.styles';
+import { mb, mt } from '../../../shared/styles/util.styles';
 import Divider from '../../atoms/Divider/divider';
 import Chip from '../../atoms/Chip/chip';
 import styles from './actionDetailsScreen.styles';
@@ -15,8 +15,15 @@ import ChipGroup from '../../molecules/ChipGroup/chipGroup';
 import moment from 'moment';
 import { EPoppins } from '../../../shared/hooks/usePoppins.hook';
 import SocialShareButtons from '../../molecules/SocialShareButtons/socialShareButtons';
+import VolunteerTaskPreview from '../../organisms/VolunteerTaskPreview/volunteerTaskPreview';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../redux/redux.types';
 
 const ActionDetailsScreen: React.FC<RouterScreenProps.IActionDetailsScreenProps> = (props) => {
+
+  const tasks = useSelector<RootState, RootState['volunteerTask']['tasks']>(
+    state => state.volunteerTask.tasks
+  )
 
   const {
     route,
@@ -147,6 +154,21 @@ const ActionDetailsScreen: React.FC<RouterScreenProps.IActionDetailsScreenProps>
       </Typography>
       <SocialShareButtons/>
       <Divider />
+      <View style={{alignSelf: 'stretch'}}>
+        <Typography fontSize={14} color={EColors.GRAY_DARKEST}>
+          TASKS
+        </Typography>
+      </View>
+      {
+        action.tasks.map((taskId, index) => (
+          <VolunteerTaskPreview
+            key={taskId}
+            cardTitle={`Task ${index + 1}`}
+            task={tasks[taskId]}
+            style={mt(4)}
+          />
+        ))
+      }
     </ScreenLayout>
   )
 };

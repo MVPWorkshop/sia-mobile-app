@@ -4,7 +4,7 @@ import ScreenLayout from '../../layouts/ScreenLayout/screenLayout';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/redux.types';
 import { IVolunteerAction } from '../../../shared/types/aidProject.types';
-import VolunteerActionPreview from '../../molecules/VolunteerActionPreview/volunteerActionPreview';
+import VolunteerActionPreview from '../../organisms/VolunteerActionPreview/volunteerActionPreview';
 import styles from './actionsScreen.styles';
 import { mb } from '../../../shared/styles/util.styles';
 

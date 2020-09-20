@@ -5,7 +5,7 @@ import { StyleProp, ViewStyle } from 'react-native';
 
 export interface IChipProps {
   chipIconProps: IconProps;
-  backgroundColor?: EColors;
+  backgroundColor?: EColors | string;
   style?: StyleProp<ViewStyle>;
   dataContainerStyle?: StyleProp<ViewStyle>;
   iconContainerStyle?: StyleProp<ViewStyle>;

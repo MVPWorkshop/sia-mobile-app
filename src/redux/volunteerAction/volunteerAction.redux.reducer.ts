@@ -10,6 +10,7 @@ import { Images } from '../../shared/constants/images.constants';
 const initialState: IVolunteerActionReduxReducerState = {
   actions: [
     {
+      id: '450f4234-6e57-40af-a1c0-51bdc83823f8',
       name: 'Help our NGO with accounting operations',
       addressCountry: 'LV',
       addressCity: 'Riga',
@@ -25,9 +26,14 @@ const initialState: IVolunteerActionReduxReducerState = {
       endDateTimestamp: moment().add(5, 'days').unix(),
       organizer: 'Latvia Food Bank',
       image: Images.volunteerActionNgoAccountingImg,
-      tasks: ['1','2','3']
+      tasks: [
+        'ecbb94e8-75b8-4c56-82ff-25ce3f934d23',
+        'aa7d7b00-546f-4d35-a1a2-33bfa5d94893',
+        '66dd2e95-9d44-4e65-a5d4-9034523b5b99'
+      ]
     },
     {
+      id: 'f32d92e5-a053-4126-ac10-a87c8c4bec6b',
       name: 'Recreational activities for our children',
       addressCountry: 'CO',
       addressCity: 'Pasto',
@@ -40,11 +46,13 @@ const initialState: IVolunteerActionReduxReducerState = {
       contactEmail: 'dan.saren@cc.co',
       contactPhone: '+40(246)221281',
       isRecurring: true,
-      startDateTimestamp: moment().subtract(2, 'days').unix(),
-      endDateTimestamp: moment().add(25, 'days').unix(),
+      startDateTimestamp: moment('01-10-2020 00:00', 'DD-MM-YYYY H:mm').unix(),
+      endDateTimestamp: moment('01-01-2021 00:00', 'DD-MM-YYYY H:mm').unix(),
       organizer: 'Columbian Children',
       image: Images.volunteerActionRecreationalImg,
-      tasks: ['1','2']
+      tasks: [
+        'c0de4833-e033-4705-9ba5-f202ad694a15'
+      ]
     }
   ]
 };

@@ -16,7 +16,7 @@ const Chip: React.FC<IChipProps> = (props) => {
     chipIconProps
   } = props;
 
-  const color = colors[backgroundColor]
+  const color = colors[backgroundColor as EColors] || backgroundColor;
 
   return (
     <View style={[

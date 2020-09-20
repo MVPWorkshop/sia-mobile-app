@@ -12,7 +12,7 @@ import { EPoppins } from '../../../shared/hooks/usePoppins.hook';
 import Circle from '../../atoms/Circle/circle';
 import Button from '../../atoms/Button/button';
 import { EButtonType } from '../../atoms/Button/button.types';
-import ChipGroup from '../ChipGroup/chipGroup';
+import ChipGroup from '../../molecules/ChipGroup/chipGroup';
 
 const VolunteerActionPreview: React.FC<IVolunteerActionPreviewProps> = (props) => {
 
