@@ -45,7 +45,7 @@ const LoginScreen: React.FC<RouterScreenProps.ILoginScreenProps> = (props) => {
   }
 
   return (
-    <ScreenLayout style={styles.loginScreen} keyboardAvoiding={true}>
+    <ScreenLayout style={styles.loginScreen} scroll={true}>
       <View style={styles.logoImageContainer}>
         <Image
           source={Images.logo}

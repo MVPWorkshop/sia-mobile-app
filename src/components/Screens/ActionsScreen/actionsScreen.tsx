@@ -34,7 +34,7 @@ const ActionsScreen: React.FC<RouterScreenProps.IActionsScreenProps> = (props) =
     <ScreenLayout
       style={styles.actionsScreen}
       safeArea={false}
-      keyboardAvoiding={true}
+      scroll={true}
     >
       {renderActionList()}
     </ScreenLayout>

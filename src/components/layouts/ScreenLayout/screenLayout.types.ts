@@ -6,5 +6,5 @@ export interface IScreenLayoutProps {
   statusBarColor?: EColors;
   safeArea?: boolean;
   style?: StyleProp<ViewStyle>;
-  keyboardAvoiding?: boolean;
+  scroll?: boolean;
 }

@@ -16,4 +16,5 @@ export interface ITextInputProps {
   returnKeyType?: RNEInputProps['returnKeyType'];
   onRefChange?: (ref: RNEInput) => void;
   containerStyle?: StyleProp<ViewStyle>;
+  multiline?: boolean;
 }

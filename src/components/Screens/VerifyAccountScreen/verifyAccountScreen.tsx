@@ -237,7 +237,7 @@ const VerifyAccountScreen: React.FC<RouterScreenProps.IVerifyAccountScreenProps>
   return (
     <ScreenLayout
       style={styles.verifyAccountScreen}
-      keyboardAvoiding={true}
+      scroll={true}
       bgColor={EColors.GRAYISH_BLUE}
     >
       <View style={styles.logoContainer}>

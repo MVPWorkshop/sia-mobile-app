@@ -53,7 +53,7 @@ const FinishTaskScreen: React.FC<RouterScreenProps.IFinishTaskScreenProps> = (pr
 
   return (
     <ScreenLayout
-      keyboardAvoiding={true}
+      scroll={true}
       safeArea={false}
       style={styles.finishTaskScreen}
     >

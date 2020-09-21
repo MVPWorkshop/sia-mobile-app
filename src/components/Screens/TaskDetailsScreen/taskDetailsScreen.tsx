@@ -77,7 +77,7 @@ const TaskDetailsScreen: React.FC<RouterScreenProps.ITaskDetailsScreenProps> = (
   return (
     <ScreenLayout
       safeArea={false}
-      keyboardAvoiding={true}
+      scroll={true}
       style={styles.taskDetailsScreen}
     >
       <View style={[{alignItems: 'center', flexDirection: 'row'}, mb(6)]}>

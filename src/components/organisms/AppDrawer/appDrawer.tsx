@@ -29,12 +29,12 @@ const AppDrawer: React.FC<DrawerContentComponentProps> = (props) => {
     props.navigation.dispatch(DrawerActions.closeDrawer);
   }
 
-  const navigateTo = (route?: ERouterScreens) => () => {
+  const navigateTo = (route?: ERouterScreens | ERouterFlows, params?: any) => () => {
     if (!route) {
       return;
     }
 
-    props.navigation.navigate(route)
+    props.navigation.navigate(route, params)
     closeDrawer()
   }
 
@@ -88,7 +88,9 @@ const AppDrawer: React.FC<DrawerContentComponentProps> = (props) => {
           iconType={'feather'}
         />
         <DrawerOption
-          onClick={navigateTo()}
+          onClick={navigateTo(ERouterFlows.HomeWalletFlow, {
+            screen: ERouterScreens.CouponsScreen
+          })}
           label={'Coupons'}
           iconName={'tag'}
           iconType={'feather'}
