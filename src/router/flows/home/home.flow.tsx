@@ -6,6 +6,7 @@ import HomeTabVolunteerOptions from '../../tab/volunteer/homeTab.Volunteer';
 import HomeActionsFlow from './homeActions.flow';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeTasksFlow from './homeTasks.flow';
+import AppDrawer from '../../../components/organisms/AppDrawer/appDrawer';
 
 const HomeFlowBottomTab = createBottomTabNavigator();
 const HomeFlowDrawer = createDrawerNavigator();
@@ -26,7 +27,9 @@ const HomeTabFlow = () => {
 
 const HomeFlow = () => {
   return (
-    <HomeFlowDrawer.Navigator>
+    <HomeFlowDrawer.Navigator
+      drawerContent={(props) => <AppDrawer {...props}/>}
+    >
       <HomeFlowDrawer.Screen name={ERouterFlows.HomeFlow} component={HomeTabFlow} />
     </HomeFlowDrawer.Navigator>
   )

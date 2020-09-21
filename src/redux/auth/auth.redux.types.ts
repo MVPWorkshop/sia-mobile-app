@@ -31,7 +31,7 @@ export type AuthReduxActions =
   ToggleIsVerified;
 
 export interface IAuthReduxReducerState {
-  user?: IUser;
+  user: IUser;
   isVerified: boolean;
   isAuthenticated: boolean;
 }

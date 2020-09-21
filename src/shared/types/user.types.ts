@@ -1,3 +1,7 @@
+export enum EUserRoles {
+  VOLUNTEER = 'VOLUNTEER'
+}
+
 export interface IUser {
   firstName: string;
   lastName: string;
@@ -9,4 +13,5 @@ export interface IUser {
   profession?: string;
   phoneNumber?: string;
   birthDateTimestamp?: number;
+  role?: EUserRoles;
 }

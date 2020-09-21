@@ -95,7 +95,7 @@ const Button: React.FC<IButtonProps> = (props) => {
     return EColors.WHITE;
   }
 
-  const renderIcon = (iconName?: IconProps['name'], iconType?: IconProps['type']) => {
+  const renderIcon = (iconName?: IconProps['name'], iconType?: IconProps['type'], otherProps?: Omit<IconProps, 'name' | 'type'>) => {
     return (
       <View style={isThereIcon && styles.iconContainer}>
         {iconName && iconType ?
@@ -104,6 +104,7 @@ const Button: React.FC<IButtonProps> = (props) => {
             type={iconType}
             color={getColor(getLabelColor())}
             size={btnIconSize}
+            {...(otherProps || {})}
           /> : null}
       </View>
     )
@@ -112,7 +113,7 @@ const Button: React.FC<IButtonProps> = (props) => {
   const renderContent = () => {
     return (
       <View style={getButtonStyle()}>
-        {renderIcon(iconLeft?.name, iconLeft?.type)}
+        {renderIcon(iconLeft?.name, iconLeft?.type, iconLeft?.otherIconProps)}
         {
           typeof children === 'string' ?
             <Typography
@@ -126,7 +127,7 @@ const Button: React.FC<IButtonProps> = (props) => {
               {children}
             </Fragment>
         }
-        {renderIcon(iconRight?.name, iconRight?.type)}
+        {renderIcon(iconRight?.name, iconRight?.type, iconRight?.otherIconProps)}
       </View>
     )
   }

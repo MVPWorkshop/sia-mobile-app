@@ -19,11 +19,13 @@ export interface IButtonProps {
   labelStyle?: ITypographyProps['style'];
   iconLeft?: {
     name: IconProps['name'],
-    type: IconProps['type']
+    type: IconProps['type'],
+    otherIconProps?: Omit<IconProps, 'name' | 'type'>
   };
   iconRight?: {
     name: IconProps['name'],
-    type: IconProps['type']
+    type: IconProps['type'],
+    otherIconProps?: Omit<IconProps, 'name' | 'type'>
   };
   removePadding?: boolean;
 }

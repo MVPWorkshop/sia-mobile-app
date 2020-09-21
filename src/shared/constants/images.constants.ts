@@ -22,6 +22,8 @@ const images = {
 
   qrCode: require('../../../assets/qrCode.png'),
   qrWithOutline: require('../../../assets/qrWithOutline.png'),
+
+  userImg: require('../../../assets/userImg.png'),
 }
 
 export type ImageKeys = keyof typeof images;

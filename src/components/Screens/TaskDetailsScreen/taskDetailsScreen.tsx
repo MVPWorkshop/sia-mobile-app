@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import ScreenLayout from '../../layouts/ScreenLayout/screenLayout';
 import styles from './taskDetailsScreen.styles';
-import { ERouterFlows, ERouterScreens, RouterScreenProps } from '../../../shared/types/router.types';
+import { ERouterScreens, RouterScreenProps } from '../../../shared/types/router.types';
 import { EVolunteerTaskStatus, IVolunteerAction, IVolunteerTask } from '../../../shared/types/aidProject.types';
 import moment from 'moment';
 import Typography from '../../atoms/Typography/typography';
@@ -54,12 +54,9 @@ const TaskDetailsScreen: React.FC<RouterScreenProps.ITaskDetailsScreenProps> = (
 
   const finishTask = () => {
     // @ts-ignore
-    props.navigation.navigate(ERouterFlows.HomeActionsFlow, {
-      screen: ERouterScreens.FinishTaskScreen,
-      params: {
-        volunteerTask: task,
-        taskName
-      }
+    props.navigation.navigate(ERouterScreens.FinishTaskScreen, {
+      volunteerTask: task,
+      taskName
     })
   }
 
