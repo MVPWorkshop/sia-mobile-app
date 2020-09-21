@@ -13,8 +13,9 @@ import {
 } from 'react-native';
 import Typography from '../Typography/typography';
 import { ITypographyProps } from '../Typography/typography.types';
-import { accentColor, colors, EAccents, EColors } from '../../../shared/styles/variables.styles';
+import { EColors } from '../../../shared/styles/variables.styles';
 import { Icon, IconProps } from 'react-native-elements';
+import { getColor } from '../../../shared/utils/common.util';
 
 const ButtonComponent: React.FC<TouchableNativeFeedbackProps | TouchableOpacityProps> = (props) => {
   if (Platform.OS === 'android') {
@@ -36,7 +37,9 @@ const Button: React.FC<IButtonProps> = (props) => {
     labelColor,
     iconLeft,
     iconRight,
-    labelStyle
+    labelStyle,
+    removePadding,
+    extend
   } = props;
 
   const isDisabled = disabled || loading;
@@ -59,6 +62,18 @@ const Button: React.FC<IButtonProps> = (props) => {
       buttonStyle.push(styles.buttonOutlined)
     }
 
+    if (removePadding) {
+      buttonStyle.push({
+        padding: 0
+      })
+    }
+
+    if (extend) {
+      buttonStyle.push({
+        width: '100%'
+      })
+    }
+
     if (isDisabled) {
       buttonStyle.push(styles.disabled);
     }
@@ -68,7 +83,7 @@ const Button: React.FC<IButtonProps> = (props) => {
     return buttonStyle;
   }
 
-  const getLabelColor = (): ITypographyProps['color'] => {
+  const getLabelColor = (): NonNullable<ITypographyProps['color']> => {
     if (labelColor) {
       return labelColor;
     }
@@ -87,7 +102,7 @@ const Button: React.FC<IButtonProps> = (props) => {
           <Icon
             name={iconName}
             type={iconType}
-            color={colors[getLabelColor() as EColors] || accentColor[getLabelColor() as EAccents]}
+            color={getColor(getLabelColor())}
             size={btnIconSize}
           /> : null}
       </View>

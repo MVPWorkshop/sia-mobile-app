@@ -10,8 +10,9 @@ const AuthFlowStack = createStackNavigator();
 
 const AuthFlow = () => {
   const isLoggedIn = useSelector<RootState, boolean>(state => state.auth.isAuthenticated);
+  const isVerified = useSelector<RootState, boolean>(state => state.auth.isVerified);
 
-  if (isLoggedIn) {
+  if (isLoggedIn && isVerified) {
     return null;
   }
 

@@ -9,6 +9,7 @@ export enum EButtonType {
 }
 
 export interface IButtonProps {
+  extend?: boolean;
   onClick: () => void;
   disabled?: boolean;
   loading?: boolean;
@@ -24,4 +25,5 @@ export interface IButtonProps {
     name: IconProps['name'],
     type: IconProps['type']
   };
+  removePadding?: boolean;
 }

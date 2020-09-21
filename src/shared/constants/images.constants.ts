@@ -6,7 +6,7 @@ const images = {
   registerMailImg: require('../../../assets/register_mail_img.png'),
   registerPasswordImg: require('../../../assets/register_password_img.png'),
   registerVolunteeringInfoImg: require('../../../assets/register_volunteering_info_img.png'),
-  registerSuccessImg: require('../../../assets/register_success_img.png'),
+  successImg: require('../../../assets/register_success_img.png'),
 
   verifyAccountLocationImg: require('../../../assets/verify_account_location_img.png'),
   verifyAccountPersonalInfoImg: require('../../../assets/verify_account_personal_info_img.png'),
@@ -14,6 +14,14 @@ const images = {
 
   hamburger: require('../../../assets/hamburger.png'),
   search: require('../../../assets/search.png'),
+
+  coinsIcon: require('../../../assets/coinsIcon.png'),
+
+  volunteerActionNgoAccountingImg: require('../../../assets/help_ngo_cover_img.png'),
+  volunteerActionRecreationalImg: require('../../../assets/recreational_activities_cover_img.png'),
+
+  qrCode: require('../../../assets/qrCode.png'),
+  qrWithOutline: require('../../../assets/qrWithOutline.png'),
 }
 
 export type ImageKeys = keyof typeof images;

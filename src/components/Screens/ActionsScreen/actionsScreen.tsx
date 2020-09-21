@@ -1,15 +1,42 @@
 import React from 'react'
-import { Image, Text } from 'react-native';
-import { RouterScreenProps } from '../../../shared/types/router.types';
+import { ERouterScreens, RouterScreenProps } from '../../../shared/types/router.types';
 import ScreenLayout from '../../layouts/ScreenLayout/screenLayout';
-import Button from '../../atoms/Button/button';
-import { EButtonType } from '../../atoms/Button/button.types';
-import { Images } from '../../../shared/constants/images.constants';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../redux/redux.types';
+import { IVolunteerAction } from '../../../shared/types/aidProject.types';
+import VolunteerActionPreview from '../../organisms/VolunteerActionPreview/volunteerActionPreview';
+import styles from './actionsScreen.styles';
+import { mb } from '../../../shared/styles/util.styles';
 
-const ActionsScreen: React.FC<RouterScreenProps.IActionsScreenProps> = () => {
+const ActionsScreen: React.FC<RouterScreenProps.IActionsScreenProps> = (props) => {
+
+  const volunteerActions = useSelector<RootState, IVolunteerAction[]>(state => state.volunteerAction.actions);
+
+  const openActionDetails = (volunteerAction: IVolunteerAction) => () => {
+    // @ts-ignore
+    props.navigation.navigate(ERouterScreens.ActionDetailsScreen, {
+      volunteerAction
+    })
+  }
+
+  const renderActionList = () => {
+    return volunteerActions.map(action => (
+      <VolunteerActionPreview
+        onClick={openActionDetails(action)}
+        action={action}
+        key={action.name}
+        style={mb(4)}
+      />
+    ))
+  }
+
   return (
-    <ScreenLayout>
-      <Text>Actions screen</Text>
+    <ScreenLayout
+      style={styles.actionsScreen}
+      safeArea={false}
+      keyboardAvoiding={true}
+    >
+      {renderActionList()}
     </ScreenLayout>
   )
 }

@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   screenLayout: {
     flex: 1,
     alignItems: 'center',
-    padding: 25
+    padding: 16
   }
 });
 

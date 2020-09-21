@@ -11,7 +11,8 @@ const Typography: React.FC<ITypographyProps> = (props) => {
     fontFamily = EPoppins.Regular,
     color = EColors.BLACK,
     style,
-    textProps
+    textProps,
+    children
   } = props;
 
   const typographyStyle: TextStyle = {
@@ -29,7 +30,7 @@ const Typography: React.FC<ITypographyProps> = (props) => {
       style,
       textProps?.style
     ]}>
-      {props.children}
+      {children}
     </Text>
   )
 }

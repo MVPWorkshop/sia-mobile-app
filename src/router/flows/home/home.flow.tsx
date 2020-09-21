@@ -1,6 +1,5 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import ActionsScreen from '../../../components/Screens/ActionsScreen/actionsScreen';
 import TasksScreen from '../../../components/Screens/TasksScreen/tasksScreen';
 import WalletScreen from '../../../components/Screens/WalletScreen/walletScreen';
 import { ERouterFlows, ERouterScreens } from '../../../shared/types/router.types';

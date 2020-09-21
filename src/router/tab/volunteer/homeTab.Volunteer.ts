@@ -2,7 +2,7 @@ import { ERouterFlows, ERouterScreens } from '../../../shared/types/router.types
 import { TabIconNameMap, TabLabelMap, TabScreenOptions } from '../tabOptions.types';
 import { getTabBarIcon, getTabBarLabel } from '../tabOptions.util';
 import { BottomTabBarOptions } from '@react-navigation/bottom-tabs';
-import { accentColor, colors } from '../../../shared/styles/variables.styles';
+import { accentColor } from '../../../shared/styles/variables.styles';
 
 class HomeTabVolunteerOptions {
 
@@ -59,11 +59,11 @@ class HomeTabVolunteerOptions {
   public static tabBarOptions: BottomTabBarOptions = {
     activeTintColor: accentColor.PRIMARY,
     style: {
-      height: 70,
+      height: 60,
       paddingTop: 10,
       paddingBottom: 4,
-      borderTopLeftRadius: 50,
-      borderTopRightRadius: 50
+      borderTopLeftRadius: 18,
+      borderTopRightRadius: 18
     }
   }
 }

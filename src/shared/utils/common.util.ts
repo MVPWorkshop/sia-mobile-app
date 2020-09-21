@@ -1,4 +1,5 @@
 import { AllKeysRequired, DynamicObject } from '../types/util.types';
+import { accentColor, colors, EAccents, EColors } from '../styles/variables.styles';
 
 export function keys<O extends object>(obj: O): (keyof O)[] {
   return Object.keys(obj) as (keyof O)[];
@@ -25,4 +26,14 @@ export function sanitizeEmptyFields(data?: DynamicObject<any, string, AllKeysReq
   });
 
   return newData;
+}
+
+export function getColor(color: EColors | EAccents | string) {
+  if (accentColor[color as EAccents]) {
+    return accentColor[color as EAccents];
+  } else if (colors[color as EColors]) {
+    return colors[color as EColors];
+  } else {
+    return color;
+  }
 }

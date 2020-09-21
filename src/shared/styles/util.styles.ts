@@ -8,7 +8,7 @@ const baseSpacing = 4;
  * @param spacing
  * @param spacingSize
  */
-function getSpacingSize(spacing: number, spacingSize: number = baseSpacing) {
+export function getSpacingSize(spacing: number, spacingSize: number = baseSpacing) {
   return spacing * baseSpacing;
 }
 

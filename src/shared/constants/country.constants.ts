@@ -1,4 +1,5 @@
 import { ISelectionOption } from '../types/input.types';
+import { arrayToObjectsByKey } from '../utils/common.util';
 
 export const countries: ISelectionOption[] = [
   {
@@ -938,3 +939,5 @@ export const countries: ISelectionOption[] = [
     "value":"ZW"
   }
 ]
+
+export const countriesByAlpha2 = arrayToObjectsByKey(countries, 'value');

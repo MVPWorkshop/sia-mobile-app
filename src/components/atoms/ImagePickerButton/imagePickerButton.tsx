@@ -23,7 +23,6 @@ const ImagePickerButton: React.FC<IImagePickerBtnProps> = (props) => {
         setIsPictureTaken(true);
       }
     } catch (error) {
-      console.log(error)
       alert('Please grant permissions in order to take the picture of your identity document');
     }
   }

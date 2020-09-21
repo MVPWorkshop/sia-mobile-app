@@ -236,6 +236,7 @@ const VerifyAccountScreen: React.FC<RouterScreenProps.IVerifyAccountScreenProps>
 
   return (
     <ScreenLayout
+      style={styles.verifyAccountScreen}
       keyboardAvoiding={true}
       bgColor={EColors.GRAYISH_BLUE}
     >
