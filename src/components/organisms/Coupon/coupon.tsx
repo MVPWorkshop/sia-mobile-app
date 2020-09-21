@@ -13,6 +13,8 @@ import SemiCircle from '../../atoms/SemiCircle/semiCircle';
 import { ECouponStatus } from '../../../shared/types/aidProject.types';
 import { useDispatch } from 'react-redux';
 import { claimCoupon } from '../../../redux/wallet/wallet.redux.actions';
+import { getColor } from '../../../shared/utils/common.util';
+import { EColors } from '../../../shared/styles/variables.styles';
 
 const Coupon: React.FC<ICouponProps> = (props) => {
 
@@ -83,13 +85,15 @@ const Coupon: React.FC<ICouponProps> = (props) => {
               <SemiCircle
                 direction={'down'}
                 size={15}
+                color={getColor(EColors.GRAYISH_BLUE)}
               />
               <View style={{overflow: 'hidden', height: 140}}>
-                <SvgDashedLine />
+                <SvgDashedLine color={getColor(EColors.GRAYISH_BLUE)}/>
               </View>
               <SemiCircle
                 direction={'up'}
                 size={15}
+                color={getColor(EColors.GRAYISH_BLUE)}
               />
             </View>
             <View style={{alignItems: 'center', justifyContent: 'center'}}>

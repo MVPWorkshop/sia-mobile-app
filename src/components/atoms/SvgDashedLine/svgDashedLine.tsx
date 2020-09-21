@@ -11,7 +11,7 @@ const SvgDashedLine: React.FC<SvgProps> = (props) => {
         y2={100}
         strokeDasharray={6}
         strokeWidth={4}
-        stroke={'white'}
+        stroke={props.color || 'white'}
       />
     </Svg>
   )
