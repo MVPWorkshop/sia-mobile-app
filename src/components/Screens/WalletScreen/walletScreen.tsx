@@ -81,7 +81,7 @@ const WalletScreen: React.FC<RouterScreenProps.IWalletScreenProps> = () => {
         <Typography fontFamily={EPoppins.SemiBold} fontSize={24}>
           Contact Support
         </Typography>
-      </View>frd
+      </View>
       { displaySupport ?
         <Fragment>
           <TextInput
