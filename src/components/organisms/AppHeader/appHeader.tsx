@@ -18,7 +18,8 @@ import { RootState } from '../../../redux/redux.types';
 const AppHeader: React.FC<StackHeaderProps> = (props) => {
 
   const {
-    insets
+    insets,
+    scene
   } = props;
 
   const openDrawer = () => {
@@ -50,15 +51,18 @@ const AppHeader: React.FC<StackHeaderProps> = (props) => {
 
         <Image source={Images.logo} style={styles.imgLogo}/>
 
-        <Button
-          onClick={() => {}}
-          type={EButtonType.FLAT}
-        >
-          <Image
-            source={Images.search}
-            style={styles.imgSearch}
-          />
-        </Button>
+        { scene.route.name === ERouterScreens.ActionsScreen ?
+          <Button
+            onClick={() => {
+            }}
+            type={EButtonType.FLAT}
+          >
+            <Image
+              source={Images.search}
+              style={styles.imgSearch}
+            />
+          </Button> : <View style={{height: 50, width: 50}}/>
+        }
       </View>
       { !isVerified ?
         <TouchableOpacity onPress={handleVerification} >

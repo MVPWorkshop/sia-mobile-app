@@ -78,7 +78,9 @@ const VolunteerTaskPreview: React.FC<IVolunteerTaskPreviewProps> = (props) => {
 
   const {
     task,
-    cardTitle
+    action,
+    cardTitle,
+    showProjectLabel
   } = props;
 
   const dispatch = useDispatch();
@@ -115,6 +117,16 @@ const VolunteerTaskPreview: React.FC<IVolunteerTaskPreviewProps> = (props) => {
 
   return (
     <View style={[styles.volunteerTaskPreview, props.style]}>
+      { !!showProjectLabel &&
+        <View style={styles.projectLabelContainer}>
+          <Typography fontSize={14} color={'rgba(255,255,255,0.5)'}>
+            PROJECT
+          </Typography>
+          <Typography color={EColors.WHITE} fontSize={14}>
+            {action.name}
+          </Typography>
+        </View>
+      }
       <Button type={EButtonType.FLAT} removePadding={true} onClick={props.onClick}>
         <View style={styles.contentContainer}>
           <Typography fontSize={14} color={EColors.GRAY_DARKER}>

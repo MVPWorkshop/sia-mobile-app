@@ -174,6 +174,7 @@ const ActionDetailsScreen: React.FC<RouterScreenProps.IActionDetailsScreenProps>
       {
         action.tasks.map((taskId, index) => (
           <VolunteerTaskPreview
+            action={action}
             key={taskId}
             onClick={openTaskDetails(taskId, `Task ${index + 1}`)}
             cardTitle={`Task ${index + 1}`}

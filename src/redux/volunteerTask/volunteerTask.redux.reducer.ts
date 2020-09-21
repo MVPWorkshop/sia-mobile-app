@@ -74,7 +74,7 @@ const initialState: IVolunteerTaskReduxReducerState = {
       ].join('\n'),
       name: 'Recreational activities - First week of Octobers',
       requirements: 'Specific requirements for this task.',
-      status: EVolunteerTaskStatus.NEUTRAL,
+      status: EVolunteerTaskStatus.UNFINISHED,
       updates: []
     },
   }

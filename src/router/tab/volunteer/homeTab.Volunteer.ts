@@ -17,7 +17,7 @@ class HomeTabVolunteerOptions {
         iconName: 'flash-outline'
       }
     },
-    [ERouterScreens.TasksScreen]: {
+    [ERouterFlows.HomeTasksFlow]: {
       focused: {
         iconType: 'font-awesome',
         iconName: 'file'
@@ -41,7 +41,7 @@ class HomeTabVolunteerOptions {
 
   private static _tabLabels: TabLabelMap = {
     [ERouterFlows.HomeActionsFlow]: 'Actions',
-    [ERouterScreens.TasksScreen]: 'Tasks',
+    [ERouterFlows.HomeTasksFlow]: 'Tasks',
     [ERouterScreens.WalletScreen]: 'Wallet'
 
   }

@@ -7,12 +7,19 @@ const styles = (mainColor: string) =>
       borderColor: mainColor,
       borderWidth: 1,
       borderRadius: 25,
+      overflow: 'hidden'
     },
     contentContainer: {
       flexGrow: 1,
       height: 330,
       padding: 16
     },
+    projectLabelContainer: {
+      backgroundColor: mainColor,
+      width: '100%',
+      paddingHorizontal: 16,
+      paddingVertical: 8
+    }
   })
 
 export default styles;
