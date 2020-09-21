@@ -49,3 +49,20 @@ interface IVolunteerTaskNonTaken extends IVolunteerTaskBase {
 }
 
 export type IVolunteerTask = IVolunteerTaskNonTaken | IVolunteerTaskTaken;
+
+
+export enum ECouponStatus {
+  UNCLAIMED = 'UNCLAIMED',
+  CLAIMED = 'CLAIMED'
+}
+
+export interface ICoupon {
+  id: string;
+  couponImgSrc: number;
+  name: string;
+  description: string;
+  link: string;
+  discount: number;
+  price: number;
+  status: ECouponStatus;
+}

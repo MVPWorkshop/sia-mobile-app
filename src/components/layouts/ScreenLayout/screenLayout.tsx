@@ -12,7 +12,7 @@ const ScreenLayout: React.FC<IScreenLayoutProps> = (props) => {
   const {
     safeArea = true,
     style,
-    keyboardAvoiding = false,
+    scroll = false,
     statusBarColor,
     bgColor = EColors.GRAYISH_BLUE
   } = props;
@@ -30,7 +30,7 @@ const ScreenLayout: React.FC<IScreenLayoutProps> = (props) => {
   }
 
   const renderKeyboardAvoidingView = (children: JSX.Element) => {
-    if (!keyboardAvoiding) {
+    if (!scroll) {
       return children;
     }
 

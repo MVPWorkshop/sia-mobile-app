@@ -55,7 +55,7 @@ const ActionDetailsScreen: React.FC<RouterScreenProps.IActionDetailsScreenProps>
 
   return (
     <ScreenLayout
-      keyboardAvoiding={true}
+      scroll={true}
       safeArea={false}
       style={styles.actionDetailsScreen}
     >

@@ -78,7 +78,7 @@ const TasksScreen: React.FC<RouterScreenProps.ITasksScreenProps> = (props) => {
 
   return (
     <ScreenLayout
-      keyboardAvoiding={true}
+      scroll={true}
       safeArea={false}
     >
       <View style={{alignSelf: 'stretch', flex: 1}}>

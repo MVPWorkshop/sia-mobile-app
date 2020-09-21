@@ -262,7 +262,7 @@ const RegisterScreen: React.FC<RouterScreenProps.IRegisterScreenProps> = (props)
     <ScreenLayout
       style={styles.registerScreen}
       bgColor={EColors.GRAYISH_BLUE}
-      keyboardAvoiding={true}
+      scroll={true}
     >
       <View style={styles.logoContainer}>
         <Image

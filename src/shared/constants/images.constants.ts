@@ -24,6 +24,9 @@ const images = {
   qrWithOutline: require('../../../assets/qrWithOutline.png'),
 
   userImg: require('../../../assets/userImg.png'),
+
+  //Logos
+  nikeLogo: require('../../../assets/nikeLogo.png'),
 }
 
 export type ImageKeys = keyof typeof images;

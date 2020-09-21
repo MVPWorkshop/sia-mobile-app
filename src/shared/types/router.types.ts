@@ -1,13 +1,15 @@
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { StackScreenProps } from '@react-navigation/stack';
 import { IVolunteerAction, IVolunteerTask } from './aidProject.types';
+import { DrawerScreenProps } from '@react-navigation/drawer';
 
 export enum ERouterFlows {
   AuthFlow = 'AuthFlow',
   HomeDrawer = 'HomeDrawer',
   HomeFlow = 'HomeFlow',
   HomeActionsFlow = 'HomeActionsFlow',
-  HomeTasksFlow = 'HomeTasksFlow'
+  HomeTasksFlow = 'HomeTasksFlow',
+  HomeWalletFlow = 'HomeWalletFlow'
 }
 
 export enum ERouterScreens {
@@ -19,7 +21,8 @@ export enum ERouterScreens {
   RegisterScreen = 'RegisterScreen',
   TasksScreen = 'TasksScreen',
   WalletScreen = 'WalletScreen',
-  VerifyAccountScreen = 'VerifyAccountScreen'
+  VerifyAccountScreen = 'VerifyAccountScreen',
+  CouponsScreen = 'CouponsScreen'
 }
 
 export type RouteName = ERouterFlows | ERouterScreens;
@@ -61,7 +64,10 @@ export type IRouteParams = {
         [ERouterScreens.TaskDetailsScreen]: ITaskDetailsScreenParams;
         [ERouterScreens.FinishTaskScreen]: IFinishTaskScreenParams;
       }>;
-      [ERouterScreens.WalletScreen]: undefined;
+      [ERouterFlows.HomeWalletFlow]: NestedNavigatorParams<{
+        [ERouterScreens.WalletScreen]: undefined;
+        [ERouterScreens.CouponsScreen]: undefined;
+      }>;
     }>;
   }>;
   [ERouterScreens.VerifyAccountScreen]: {
@@ -85,6 +91,7 @@ export declare namespace RouterScreenProps {
   interface ITasksScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
 
   interface IWalletScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
+  interface ICouponsScreenProps extends DrawerScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
 
   // Verify flow
   interface IVerifyAccountScreenProps extends StackScreenProps<IRouteParams, ERouterScreens.VerifyAccountScreen> {}

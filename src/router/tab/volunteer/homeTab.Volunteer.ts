@@ -27,7 +27,7 @@ class HomeTabVolunteerOptions {
         iconName: 'file-o'
       }
     },
-    [ERouterScreens.WalletScreen]: {
+    [ERouterFlows.HomeWalletFlow]: {
       focused: {
         iconType: 'material-community',
         iconName: 'wallet'
@@ -42,7 +42,7 @@ class HomeTabVolunteerOptions {
   private static _tabLabels: TabLabelMap = {
     [ERouterFlows.HomeActionsFlow]: 'Actions',
     [ERouterFlows.HomeTasksFlow]: 'Tasks',
-    [ERouterScreens.WalletScreen]: 'Wallet'
+    [ERouterFlows.HomeWalletFlow]: 'Wallet'
 
   }
 
