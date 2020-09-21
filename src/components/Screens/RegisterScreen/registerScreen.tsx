@@ -38,7 +38,7 @@ const imageByStep: DynamicObject<number, ERegistrationSteps, AllKeysRequired> = 
   INITIALS: Images.registerInitialsImg,
   MAIL: Images.registerMailImg,
   PASSWORD: Images.registerPasswordImg,
-  SUCCESS: Images.registerSuccessImg,
+  SUCCESS: Images.successImg,
   VOLUNTEERING_INFO: Images.registerVolunteeringInfoImg
 }
 

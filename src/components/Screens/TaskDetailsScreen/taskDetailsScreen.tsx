@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import ScreenLayout from '../../layouts/ScreenLayout/screenLayout';
 import styles from './taskDetailsScreen.styles';
-import { RouterScreenProps } from '../../../shared/types/router.types';
+import { ERouterFlows, ERouterScreens, RouterScreenProps } from '../../../shared/types/router.types';
 import { EVolunteerTaskStatus, IVolunteerAction, IVolunteerTask } from '../../../shared/types/aidProject.types';
 import moment from 'moment';
 import Typography from '../../atoms/Typography/typography';
@@ -17,9 +17,10 @@ import Chip from '../../atoms/Chip/chip';
 import { countriesByAlpha2 } from '../../../shared/constants/country.constants';
 import { Images } from '../../../shared/constants/images.constants';
 import Button from '../../atoms/Button/button';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateVolunteerTask } from '../../../redux/volunteerTask/volunteerTask.redux.actions';
 import { EButtonType } from '../../atoms/Button/button.types';
+import { RootState } from '../../../redux/redux.types';
 
 const TaskDetailsScreen: React.FC<RouterScreenProps.ITaskDetailsScreenProps> = (props) => {
 
@@ -31,9 +32,12 @@ const TaskDetailsScreen: React.FC<RouterScreenProps.ITaskDetailsScreenProps> = (
   } = props;
 
   const routeParams = route.params as any;
-  const task = routeParams.volunteerTask as IVolunteerTask;
+  const taskId = routeParams.volunteerTaskId as string;
   const action = routeParams.volunteerAction as IVolunteerAction;
   const taskName = routeParams.taskName as string;
+  const task = useSelector<RootState, IVolunteerTask>(
+    state => state.volunteerTask.tasks[taskId]
+  )
 
   if (!task) {
     navigation.goBack();
@@ -49,10 +53,14 @@ const TaskDetailsScreen: React.FC<RouterScreenProps.ITaskDetailsScreenProps> = (
     task.status === EVolunteerTaskStatus.NEUTRAL
 
   const finishTask = () => {
-    dispatch(updateVolunteerTask(task.id, {
-      status: EVolunteerTaskStatus.FINISHED
-    }))
-    navigation.goBack()
+    // @ts-ignore
+    props.navigation.navigate(ERouterFlows.HomeActionsFlow, {
+      screen: ERouterScreens.FinishTaskScreen,
+      params: {
+        volunteerTask: task,
+        taskName
+      }
+    })
   }
 
   const cancelTask = () => {

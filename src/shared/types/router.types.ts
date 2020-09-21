@@ -13,6 +13,7 @@ export enum ERouterScreens {
   ActionsScreen = 'ActionsScreen',
   ActionDetailsScreen = 'ActionDetailsScreen',
   TaskDetailsScreen = 'TaskDetailsScreen',
+  FinishTaskScreen = 'FinishTaskScreen',
   LoginScreen = 'LoginScreen',
   RegisterScreen = 'RegisterScreen',
   TasksScreen = 'TasksScreen',
@@ -28,6 +29,19 @@ type NestedNavigatorParams<ParamList> = {
     : { screen: K; params: ParamList[K] }
 }[keyof ParamList]
 
+interface IActionDetailsScreenParams {
+  volunteerAction: IVolunteerAction;
+}
+interface ITaskDetailsScreenParams {
+  volunteerTaskId: string;
+  volunteerAction: IVolunteerAction;
+  taskName: string;
+}
+interface IFinishTaskScreenParams {
+  volunteerTask: IVolunteerTask;
+  taskName: string;
+}
+
 export type IRouteParams = {
   [ERouterFlows.AuthFlow]: NestedNavigatorParams<{
     [ERouterScreens.LoginScreen]: undefined;
@@ -37,14 +51,9 @@ export type IRouteParams = {
     [ERouterFlows.HomeFlow]: NestedNavigatorParams<{
       [ERouterFlows.HomeActionsFlow]: NestedNavigatorParams<{
         [ERouterScreens.ActionsScreen]: undefined;
-        [ERouterScreens.ActionDetailsScreen]: {
-          volunteerAction: IVolunteerAction;
-        };
-        [ERouterScreens.TaskDetailsScreen]: {
-          volunteerTask: IVolunteerTask;
-          volunteerAction: IVolunteerAction;
-          taskName: string;
-        }
+        [ERouterScreens.ActionDetailsScreen]: IActionDetailsScreenParams;
+        [ERouterScreens.TaskDetailsScreen]: ITaskDetailsScreenParams;
+        [ERouterScreens.FinishTaskScreen]: IFinishTaskScreenParams;
       }>;
       [ERouterScreens.TasksScreen]: undefined;
       [ERouterScreens.WalletScreen]: undefined;
@@ -63,10 +72,11 @@ export declare namespace RouterScreenProps {
   interface ILoginScreenProps extends StackScreenProps<IRouteParams, ERouterFlows.AuthFlow> {}
   interface IRegisterScreenProps extends StackScreenProps<IRouteParams, ERouterFlows.AuthFlow> {}
 
-  // Home actions flow
   interface IActionsScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
   interface IActionDetailsScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
+
   interface ITaskDetailsScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
+  interface IFinishTaskScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
 
   interface ITasksScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
   interface IWalletScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}

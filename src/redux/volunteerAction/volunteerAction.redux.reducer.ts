@@ -22,8 +22,8 @@ const initialState: IVolunteerActionReduxReducerState = {
       contactEmail: 'marck@col.co',
       contactPhone: '+371(67)381087',
       isRecurring: true,
-      startDateTimestamp: moment().subtract(5, 'days').unix(),
-      endDateTimestamp: moment().add(5, 'days').unix(),
+      startDateTimestamp: moment('01-10-2020 00:00', 'DD-MM-YYYY H:mm').unix(),
+      endDateTimestamp: moment('31-12-2020 23:59', 'DD-MM-YYYY H:mm').unix(),
       organizer: 'Latvia Food Bank',
       image: Images.volunteerActionNgoAccountingImg,
       tasks: [
@@ -46,8 +46,8 @@ const initialState: IVolunteerActionReduxReducerState = {
       contactEmail: 'dan.saren@cc.co',
       contactPhone: '+40(246)221281',
       isRecurring: true,
-      startDateTimestamp: moment('01-10-2020 00:00', 'DD-MM-YYYY H:mm').unix(),
-      endDateTimestamp: moment('01-01-2021 00:00', 'DD-MM-YYYY H:mm').unix(),
+      startDateTimestamp: moment().subtract(5, 'days').unix(),
+      endDateTimestamp: moment().add(5, 'days').unix(),
       organizer: 'Columbian Children',
       image: Images.volunteerActionRecreationalImg,
       tasks: [
