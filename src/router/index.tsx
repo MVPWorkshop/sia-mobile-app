@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../redux/redux.types';
 import VerifyAccountScreen from '../components/Screens/VerifyAccountScreen/verifyAccountScreen';
 import { colors } from '../shared/styles/variables.styles';
+import AccountDetailsScreen from '../components/Screens/AccountDetailsScreen/accountDetailsScreen';
 
 const RootStack = createStackNavigator();
 const RootStackOptions: StackNavigationOptions = {
@@ -37,6 +38,7 @@ const Router: React.FC = () => {
         <RootStack.Screen name={ERouterFlows.HomeDrawer} component={HomeFlow} />
 
         <RootStack.Screen name={ERouterScreens.VerifyAccountScreen} component={VerifyAccountScreen} />
+        <RootStack.Screen name={ERouterScreens.AccountDetailsScreen} component={AccountDetailsScreen}/>
       </RootStack.Navigator>
     </NavigationContainer>
   )

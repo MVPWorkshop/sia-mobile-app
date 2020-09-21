@@ -2,6 +2,7 @@ import { IInput } from '../hooks/useForm.hook';
 import ValidationModel from '../models/validation.model';
 import { EValidationTypes } from '../types/validation.types';
 import moment from 'moment';
+import { EDocumentType } from '../types/user.types';
 
 export enum EVerifyAccountFormInputs {
   addressCountry = 'addressCountry',
@@ -118,7 +119,7 @@ const verifyAccountForm: IInput<EVerifyAccountFormInputs>[] = [
   },
   {
     inputName: EVerifyAccountFormInputs.documentType,
-    value: 'id',
+    value: EDocumentType.ID,
     validation: new ValidationModel([
       { type: EValidationTypes.REQUIRED }
     ])

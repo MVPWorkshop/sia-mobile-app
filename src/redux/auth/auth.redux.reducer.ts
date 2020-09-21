@@ -1,6 +1,6 @@
 import { AuthReduxActions, EAuthActions, IAuthReduxReducerState } from './auth.redux.types';
 import { Reducer } from 'redux';
-import { EUserRoles, IUser } from '../../shared/types/user.types';
+import { EDocumentType, EUserRoles, IUser } from '../../shared/types/user.types';
 import { sanitizeEmptyFields } from '../../shared/utils/common.util';
 import moment from 'moment';
 
@@ -16,7 +16,8 @@ const initialState: IAuthReduxReducerState = {
     phoneNumber: '+6148755487',
     profession: 'Student',
     birthDateTimestamp: moment('20-05-1997', 'DD-MM-YYYY').unix(),
-    role: EUserRoles.VOLUNTEER
+    role: EUserRoles.VOLUNTEER,
+    documentType: EDocumentType.ID
   },
   isVerified: false,
   isAuthenticated: true

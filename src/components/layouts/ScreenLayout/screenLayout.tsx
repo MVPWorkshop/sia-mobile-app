@@ -35,7 +35,9 @@ const ScreenLayout: React.FC<IScreenLayoutProps> = (props) => {
     }
 
     return (
-      <KeyboardAvoidingScrollView contentContainerStyle={{flexGrow: 1}}>
+      <KeyboardAvoidingScrollView
+        contentContainerStyle={{flexGrow: 1}}
+      >
         {children}
       </KeyboardAvoidingScrollView>
     )

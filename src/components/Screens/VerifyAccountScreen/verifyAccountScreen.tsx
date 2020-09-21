@@ -20,6 +20,8 @@ import RadioGroup from '../../molecules/RadioGroup/radioGroup';
 import ImagePickerButton from '../../atoms/ImagePickerButton/imagePickerButton';
 import { useDispatch } from 'react-redux';
 import { toggleIsVerified, updateUser } from '../../../redux/auth/auth.redux.actions';
+import { EDocumentType } from '../../../shared/types/user.types';
+import { labelByDocumentType } from '../../../shared/constants/user.constants';
 
 enum EVerifyAccountSteps {
   ADDRESS_INFO = 'ADDRESS_INFO',
@@ -56,7 +58,8 @@ const VerifyAccountScreen: React.FC<RouterScreenProps.IVerifyAccountScreenProps>
       addressPostalCode: formState.addressPostalCode.value,
       addressStreet: formState.addressStreet.value,
       profession: formState.profession.value,
-      phoneNumber: formState.phoneNumber.value
+      phoneNumber: formState.phoneNumber.value,
+      documentType: formState.documentType.value,
     }))
     dispatch(toggleIsVerified(true));
 
@@ -172,9 +175,9 @@ const VerifyAccountScreen: React.FC<RouterScreenProps.IVerifyAccountScreenProps>
               name={formState.documentType.inputName}
               value={formState.documentType.value}
               options={[
-                {value: 'id', label: 'ID Card'},
-                {value: 'passport', label: 'Passport'},
-                {value: 'driver_license', label: 'Driver\'s License'}
+                {value: EDocumentType.ID, label: labelByDocumentType[EDocumentType.ID]},
+                {value: EDocumentType.PASSPORT, label: labelByDocumentType[EDocumentType.PASSPORT]},
+                {value: EDocumentType.DRIVER_LICENSE, label: labelByDocumentType[EDocumentType.DRIVER_LICENSE]}
               ]}
               onChange={updateInput}
             />

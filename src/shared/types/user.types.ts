@@ -2,6 +2,12 @@ export enum EUserRoles {
   VOLUNTEER = 'VOLUNTEER'
 }
 
+export enum EDocumentType {
+  ID = 'ID',
+  PASSPORT = 'PASSPORT',
+  DRIVER_LICENSE = 'DRIVER_LICENSE'
+}
+
 export interface IUser {
   firstName: string;
   lastName: string;
@@ -13,5 +19,6 @@ export interface IUser {
   profession?: string;
   phoneNumber?: string;
   birthDateTimestamp?: number;
+  documentType?: EDocumentType;
   role?: EUserRoles;
 }

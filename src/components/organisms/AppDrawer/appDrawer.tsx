@@ -76,7 +76,7 @@ const AppDrawer: React.FC<DrawerContentComponentProps> = (props) => {
       </Typography>
       <View style={{flex: 1}}>
         <DrawerOption
-          onClick={navigateTo()}
+          onClick={navigateTo(ERouterScreens.AccountDetailsScreen)}
           label={'My Account'}
           iconName={'user'}
           iconType={'feather'}

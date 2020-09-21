@@ -22,6 +22,7 @@ export enum ERouterScreens {
   TasksScreen = 'TasksScreen',
   WalletScreen = 'WalletScreen',
   VerifyAccountScreen = 'VerifyAccountScreen',
+  AccountDetailsScreen = 'AccountDetailsScreen',
   CouponsScreen = 'CouponsScreen'
 }
 
@@ -76,23 +77,28 @@ export type IRouteParams = {
       params?: any;
     }
   }
+  [ERouterScreens.AccountDetailsScreen]: undefined;
 }
 
 export declare namespace RouterScreenProps {
-  // Auth flow
+  // Auth
   interface ILoginScreenProps extends StackScreenProps<IRouteParams, ERouterFlows.AuthFlow> {}
   interface IRegisterScreenProps extends StackScreenProps<IRouteParams, ERouterFlows.AuthFlow> {}
 
+  // Actions
   interface IActionsScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
   interface IActionDetailsScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
 
+  // Tasks
   interface ITaskDetailsScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
   interface IFinishTaskScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
   interface ITasksScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
 
+  // Wallet
   interface IWalletScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
   interface ICouponsScreenProps extends DrawerScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
 
-  // Verify flow
+  // Account
   interface IVerifyAccountScreenProps extends StackScreenProps<IRouteParams, ERouterScreens.VerifyAccountScreen> {}
+  interface IAccountDetailsScreenProps extends StackScreenProps<IRouteParams, ERouterScreens.AccountDetailsScreen> {}
 }
