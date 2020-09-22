@@ -26,8 +26,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain'
   },
   flatListItem: {
-    flex: 1,
-    flexShrink: 1,
+    flexGrow: 1,
     width: ScreenUtil.width - (screenPaddingX * 2)
   },
   stickyButtonContainer: {

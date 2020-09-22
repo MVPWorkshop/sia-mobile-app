@@ -279,7 +279,7 @@ const RegisterScreen: React.FC<RouterScreenProps.IRegisterScreenProps> = (props)
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item}
         scrollEnabled={false}
-        style={mb(10)}
+        style={[mb(10)]}
       />
       {currentStep !== ERegistrationSteps.SUCCESS ?
         <View style={styles.stickyButtonContainer}>

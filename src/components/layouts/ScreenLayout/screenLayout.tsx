@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { IScreenLayoutProps } from './screenLayout.types';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { View } from 'react-native';
-import { KeyboardAvoidingScrollView } from 'react-native-keyboard-avoiding-scroll-view';
+import KeyboardAvoidingScrollView from '../../molecules/KeyboardAvoidingScrollView/keyboardAvoidingScrollView';
 import styles from './screenLayout.styles';
 import { StatusBar } from 'expo-status-bar';
 import { colors, EColors } from '../../../shared/styles/variables.styles';
@@ -35,9 +35,7 @@ const ScreenLayout: React.FC<IScreenLayoutProps> = (props) => {
     }
 
     return (
-      <KeyboardAvoidingScrollView
-        contentContainerStyle={{flexGrow: 1}}
-      >
+      <KeyboardAvoidingScrollView>
         {children}
       </KeyboardAvoidingScrollView>
     )

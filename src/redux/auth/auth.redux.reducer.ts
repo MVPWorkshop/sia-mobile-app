@@ -20,7 +20,7 @@ const initialState: IAuthReduxReducerState = {
     documentType: EDocumentType.ID
   },
   isVerified: false,
-  isAuthenticated: true
+  isAuthenticated: false
 }
 
 const AuthReduxReducer: Reducer<IAuthReduxReducerState, AuthReduxActions> = (state = initialState, action) => {
