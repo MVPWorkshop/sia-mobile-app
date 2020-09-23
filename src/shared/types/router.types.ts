@@ -23,7 +23,8 @@ export enum ERouterScreens {
   WalletScreen = 'WalletScreen',
   VerifyAccountScreen = 'VerifyAccountScreen',
   AccountDetailsScreen = 'AccountDetailsScreen',
-  CouponsScreen = 'CouponsScreen'
+  CouponsScreen = 'CouponsScreen',
+  RoleSelectScreen = 'RoleSelectScreen',
 }
 
 export type RouteName = ERouterFlows | ERouterScreens;
@@ -45,6 +46,11 @@ interface ITaskDetailsScreenParams {
 interface IFinishTaskScreenParams {
   volunteerTask: IVolunteerTask;
   taskName: string;
+}
+
+interface NextRoute {
+  routeName: keyof IRouteParams;
+  params?: any;
 }
 
 export type IRouteParams = {
@@ -72,16 +78,15 @@ export type IRouteParams = {
     }>;
   }>;
   [ERouterScreens.VerifyAccountScreen]: {
-    onFinishRoute: {
-      routeName: keyof IRouteParams;
-      params?: any;
-    }
+    onFinishRoute: NextRoute;
   }
   [ERouterScreens.AccountDetailsScreen]: undefined;
+  [ERouterScreens.RoleSelectScreen]: NextRoute;
 }
 
 export declare namespace RouterScreenProps {
   // Auth
+  interface ISelectRoleScreenProps extends StackScreenProps<IRouteParams, ERouterScreens.RoleSelectScreen> {}
   interface ILoginScreenProps extends StackScreenProps<IRouteParams, ERouterFlows.AuthFlow> {}
   interface IRegisterScreenProps extends StackScreenProps<IRouteParams, ERouterFlows.AuthFlow> {}
 

@@ -9,6 +9,7 @@ import { RootState } from '../redux/redux.types';
 import VerifyAccountScreen from '../components/Screens/VerifyAccountScreen/verifyAccountScreen';
 import { colors } from '../shared/styles/variables.styles';
 import AccountDetailsScreen from '../components/Screens/AccountDetailsScreen/accountDetailsScreen';
+import RoleSelectScreen from '../components/Screens/RoleSelectScreen/roleSelectScreen';
 
 const RootStack = createStackNavigator();
 const RootStackOptions: StackNavigationOptions = {
@@ -39,6 +40,7 @@ const Router: React.FC = () => {
 
         <RootStack.Screen name={ERouterScreens.VerifyAccountScreen} component={VerifyAccountScreen} />
         <RootStack.Screen name={ERouterScreens.AccountDetailsScreen} component={AccountDetailsScreen}/>
+        <RootStack.Screen name={ERouterScreens.RoleSelectScreen} component={RoleSelectScreen} />
       </RootStack.Navigator>
     </NavigationContainer>
   )

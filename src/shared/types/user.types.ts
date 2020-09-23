@@ -1,5 +1,6 @@
 export enum EUserRoles {
-  VOLUNTEER = 'VOLUNTEER'
+  VOLUNTEER = 'VOLUNTEER',
+  NGO = 'NGO'
 }
 
 export enum EDocumentType {

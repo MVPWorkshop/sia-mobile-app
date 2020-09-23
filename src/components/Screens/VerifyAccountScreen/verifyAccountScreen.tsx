@@ -19,7 +19,7 @@ import TextInput from '../../atoms/TextInput/textInput';
 import RadioGroup from '../../molecules/RadioGroup/radioGroup';
 import ImagePickerButton from '../../atoms/ImagePickerButton/imagePickerButton';
 import { useDispatch } from 'react-redux';
-import { toggleIsVerified, updateUser } from '../../../redux/auth/auth.redux.actions';
+import { toggleIsAuthenticated, toggleIsVerified, updateUser } from '../../../redux/auth/auth.redux.actions';
 import { EDocumentType } from '../../../shared/types/user.types';
 import { labelByDocumentType } from '../../../shared/constants/user.constants';
 
@@ -61,6 +61,7 @@ const VerifyAccountScreen: React.FC<RouterScreenProps.IVerifyAccountScreenProps>
       phoneNumber: formState.phoneNumber.value,
       documentType: formState.documentType.value,
     }))
+    dispatch(toggleIsAuthenticated(true))
     dispatch(toggleIsVerified(true));
 
     const {
@@ -68,7 +69,7 @@ const VerifyAccountScreen: React.FC<RouterScreenProps.IVerifyAccountScreenProps>
       params
     } = props.route.params.onFinishRoute
 
-    props.navigation.navigate(routeName, params);
+    props.navigation.replace(routeName, params);
   }
 
   const renderStepContent = (step: EVerifyAccountSteps) => {

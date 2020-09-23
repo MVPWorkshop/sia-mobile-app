@@ -27,6 +27,10 @@ const images = {
 
   //Logos
   nikeLogo: require('../../../assets/nikeLogo.png'),
+
+  volunteerIcon: require('../../../assets/volunteerIcon.png'),
+  beneficiaryIcon: require('../../../assets/beneficiaryIcon.png'),
+  ngoIcon: require('../../../assets/ngoIcon.png'),
 }
 
 export type ImageKeys = keyof typeof images;

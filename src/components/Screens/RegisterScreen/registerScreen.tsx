@@ -242,8 +242,7 @@ const RegisterScreen: React.FC<RouterScreenProps.IRegisterScreenProps> = (props)
   }
 
   const handleVerifyAccount = () => {
-    // @TODO Verify account flow
-    props.navigation.navigate(ERouterScreens.VerifyAccountScreen, {
+    props.navigation.replace(ERouterScreens.VerifyAccountScreen, {
       onFinishRoute: {
         routeName: ERouterFlows.HomeDrawer
       }

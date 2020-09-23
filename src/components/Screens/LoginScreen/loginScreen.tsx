@@ -27,20 +27,20 @@ const LoginScreen: React.FC<RouterScreenProps.ILoginScreenProps> = (props) => {
       lastName: 'Test',
       firstName: 'Test'
     }))
-    props.navigation.replace(ERouterFlows.HomeDrawer, {
-      screen: ERouterFlows.HomeFlow,
+    props.navigation.replace(ERouterScreens.RoleSelectScreen, {
+      routeName: ERouterFlows.HomeDrawer,
       params: {
-        screen: ERouterFlows.HomeActionsFlow,
-        params: {
-          screen: ERouterScreens.ActionsScreen
-        }
+        screen: ERouterScreens.ActionsScreen
       }
     })
   }
 
   const handleRegister = () => {
-    props.navigation.navigate(ERouterFlows.AuthFlow, {
-      screen: ERouterScreens.RegisterScreen
+    props.navigation.navigate(ERouterScreens.RoleSelectScreen, {
+      routeName: ERouterFlows.AuthFlow,
+      params: {
+        screen: ERouterScreens.RegisterScreen
+      }
     })
   }
 
