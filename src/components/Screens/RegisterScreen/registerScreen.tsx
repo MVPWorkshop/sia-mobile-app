@@ -237,6 +237,11 @@ const RegisterScreen: React.FC<RouterScreenProps.IRegisterScreenProps> = (props)
   }
 
   const handleVerifyAccount = () => {
+    dispatch(updateUser({
+      firstName: formState.firstName.value,
+      lastName: formState.lastName.value,
+      email: formState.email.value,
+    }))
     props.navigation.replace(ERouterScreens.VerifyAccountScreen, {
       onFinishRoute: {
         routeName: ERouterFlows.HomeDrawer

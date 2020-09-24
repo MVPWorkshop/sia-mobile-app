@@ -51,18 +51,19 @@ const AppHeader: React.FC<StackHeaderProps> = (props) => {
 
         <Image source={Images.logo} style={styles.imgLogo}/>
 
-        { scene.route.name === ERouterScreens.ActionsScreen ?
-          <Button
-            onClick={() => {
-            }}
-            type={EButtonType.FLAT}
-          >
-            <Image
-              source={Images.search}
-              style={styles.imgSearch}
-            />
-          </Button> : <View style={{height: 50, width: 50}}/>
-        }
+        <View style={{height: 50, width: 50}}/>
+        {/*{ scene.route.name === ERouterScreens.ActionsScreen ?*/}
+        {/*  <Button*/}
+        {/*    onClick={() => {*/}
+        {/*    }}*/}
+        {/*    type={EButtonType.FLAT}*/}
+        {/*  >*/}
+        {/*    <Image*/}
+        {/*      source={Images.search}*/}
+        {/*      style={styles.imgSearch}*/}
+        {/*    />*/}
+        {/*  </Button> : */}
+        {/*}*/}
       </View>
       { !isVerified ?
         <TouchableOpacity onPress={handleVerification} >

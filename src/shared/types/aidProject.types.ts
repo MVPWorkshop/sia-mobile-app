@@ -1,3 +1,8 @@
+export enum EVolunteerActionStatus {
+  ACTIVE = 'ACTIVE',
+  CANCELLED = 'CANCELLED'
+}
+
 export interface IVolunteerAction {
   id: string;
   name: string;
@@ -12,6 +17,7 @@ export interface IVolunteerAction {
   contactPhone: string;
   organizer: string;
   tasks: string[];
+  status: EVolunteerActionStatus;
 }
 
 export enum EVolunteerTaskStatus {

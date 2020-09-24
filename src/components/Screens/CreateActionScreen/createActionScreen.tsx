@@ -22,7 +22,7 @@ import { addVolunteerAction } from '../../../redux/volunteerAction/volunteerActi
 import moment from 'moment';
 import { Images } from '../../../shared/constants/images.constants';
 import uuid from 'v4-uuid';
-import { IVolunteerAction } from '../../../shared/types/aidProject.types';
+import { EVolunteerActionStatus, IVolunteerAction } from '../../../shared/types/aidProject.types';
 
 const CreateActionScreen: React.FC<RouterScreenProps.ICreateActionScreenProps> = (props) => {
 
@@ -51,7 +51,8 @@ const CreateActionScreen: React.FC<RouterScreenProps.ICreateActionScreenProps> =
       addressCountry: formState.addressCountry.value,
       addressCity: formState.addressCity.value,
       description: formState.description.value,
-      image: Images.newActionImg
+      image: Images.newActionImg,
+      status: EVolunteerActionStatus.ACTIVE
     }
 
     dispatch(addVolunteerAction(newAction))

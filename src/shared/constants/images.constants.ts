@@ -19,6 +19,8 @@ const images = {
 
   volunteerActionNgoAccountingImg: require('../../../assets/help_ngo_cover_img.png'),
   volunteerActionRecreationalImg: require('../../../assets/recreational_activities_cover_img.png'),
+  homeworkImg: require('../../../assets/homeworkImg.png'),
+  newActionImg: require('../../../assets/newActionImg.png'),
 
   qrCode: require('../../../assets/qrCode.png'),
   qrWithOutline: require('../../../assets/qrWithOutline.png'),
@@ -32,7 +34,6 @@ const images = {
   beneficiaryIcon: require('../../../assets/beneficiaryIcon.png'),
   ngoIcon: require('../../../assets/ngoIcon.png'),
 
-  newActionImg: require('../../../assets/newActionImg.png'),
 }
 
 export type ImageKeys = keyof typeof images;

@@ -5,7 +5,7 @@ import styles from './appDrawer.styles';
 import { Images } from '../../../shared/constants/images.constants';
 import Typography from '../../atoms/Typography/typography';
 import { useDispatch, useSelector } from 'react-redux';
-import { IUser } from '../../../shared/types/user.types';
+import { EUserRoles, IUser } from '../../../shared/types/user.types';
 import { RootState } from '../../../redux/redux.types';
 import { EPoppins } from '../../../shared/hooks/usePoppins.hook';
 import { EColors } from '../../../shared/styles/variables.styles';
@@ -19,6 +19,7 @@ import { mb } from '../../../shared/styles/util.styles';
 import { Icon } from 'react-native-elements';
 import { getColor } from '../../../shared/utils/common.util';
 import { toggleIsAuthenticated } from '../../../redux/auth/auth.redux.actions';
+import ProtectedComponent from '../../atoms/ProtectedComponent/protectedComponent';
 
 const AppDrawer: React.FC<DrawerContentComponentProps> = (props) => {
 
@@ -81,20 +82,24 @@ const AppDrawer: React.FC<DrawerContentComponentProps> = (props) => {
           iconName={'user'}
           iconType={'feather'}
         />
-        <DrawerOption
-          onClick={navigateTo()}
-          label={'Notifications'}
-          iconName={'bell'}
-          iconType={'feather'}
-        />
-        <DrawerOption
-          onClick={navigateTo(ERouterFlows.HomeWalletFlow, {
-            screen: ERouterScreens.CouponsScreen
-          })}
-          label={'Coupons'}
-          iconName={'tag'}
-          iconType={'feather'}
-        />
+        <ProtectedComponent allowedRoles={[EUserRoles.VOLUNTEER]}>
+          <DrawerOption
+            onClick={navigateTo()}
+            label={'Notifications'}
+            iconName={'bell'}
+            iconType={'feather'}
+          />
+        </ProtectedComponent>
+        <ProtectedComponent allowedRoles={[EUserRoles.VOLUNTEER]}>
+          <DrawerOption
+            onClick={navigateTo(ERouterFlows.HomeWalletFlow, {
+              screen: ERouterScreens.CouponsScreen
+            })}
+            label={'Coupons'}
+            iconName={'tag'}
+            iconType={'feather'}
+          />
+        </ProtectedComponent>
         <DrawerOption
           onClick={navigateTo()}
           label={'Contact support'}

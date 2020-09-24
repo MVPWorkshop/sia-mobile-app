@@ -6,6 +6,7 @@ import {
 import { Reducer } from 'redux';
 import moment from 'moment';
 import { Images } from '../../shared/constants/images.constants';
+import { EVolunteerActionStatus } from '../../shared/types/aidProject.types';
 
 const initialState: IVolunteerActionReduxReducerState = {
   actions: [
@@ -30,7 +31,8 @@ const initialState: IVolunteerActionReduxReducerState = {
         'ecbb94e8-75b8-4c56-82ff-25ce3f934d23',
         'aa7d7b00-546f-4d35-a1a2-33bfa5d94893',
         '66dd2e95-9d44-4e65-a5d4-9034523b5b99'
-      ]
+      ],
+      status: EVolunteerActionStatus.ACTIVE
     },
     {
       id: 'f32d92e5-a053-4126-ac10-a87c8c4bec6b',
@@ -52,7 +54,27 @@ const initialState: IVolunteerActionReduxReducerState = {
       image: Images.volunteerActionRecreationalImg,
       tasks: [
         'c0de4833-e033-4705-9ba5-f202ad694a15'
-      ]
+      ],
+      status: EVolunteerActionStatus.ACTIVE
+    },
+    {
+      id: 'aeb6890c-9132-4e1b-b2db-99ae1ca4adbe',
+      name: 'Helping children with homework',
+      addressCountry: 'CO',
+      addressCity: 'Pasto',
+      description: [
+        'Our children are 7 and 12 years old, and they attend the local primary schools. Since we are not in a situation to send them to private lessons and they need additional consultations for finishing their homework, we are looking for someone who can help them during the weekends.',
+        'Additionally, both of them will have final exams at the end of the month, so assistance is welcomed for that too. Unfortunately, I and my husband are not educated enough to support them with their homework and tests.',
+      ].join('\n'),
+      contactEmail: 'mailto:marck@col.co',
+      contactPhone: '+40(246)221281',
+      isRecurring: true,
+      startDateTimestamp: moment('08-11-2020 00:00', 'DD-MM-YYYY H:mm').unix(),
+      endDateTimestamp: moment('18-11-2020 23:59', 'DD-MM-YYYY H:mm').unix(),
+      organizer: 'Columbian Children',
+      image: Images.homeworkImg,
+      tasks: [],
+      status: EVolunteerActionStatus.CANCELLED
     }
   ]
 };
