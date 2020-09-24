@@ -2,7 +2,7 @@ import React  from 'react'
 import { Image, View } from 'react-native';
 import { ERouterFlows, ERouterScreens, RouterScreenProps } from '../../../shared/types/router.types';
 import { useDispatch } from 'react-redux';
-import { setUser } from '../../../redux/auth/auth.redux.actions';
+import { setUser, updateUser } from '../../../redux/auth/auth.redux.actions';
 import ScreenLayout from '../../layouts/ScreenLayout/screenLayout';
 import { Images } from '../../../shared/constants/images.constants';
 import Typography from '../../atoms/Typography/typography';
@@ -22,16 +22,11 @@ const LoginScreen: React.FC<RouterScreenProps.ILoginScreenProps> = (props) => {
   const { isFormValid, formState, updateInput } = useForm(loginForm)
 
   const handleLogin = () => {
-    dispatch(setUser({
-      email: 'test@test.test',
-      lastName: 'Test',
-      firstName: 'Test'
+    dispatch(updateUser({
+      email: formState.email.value
     }))
     props.navigation.replace(ERouterScreens.RoleSelectScreen, {
-      routeName: ERouterFlows.HomeDrawer,
-      params: {
-        screen: ERouterScreens.ActionsScreen
-      }
+      routeName: ERouterFlows.HomeDrawer
     })
   }
 

@@ -1,26 +1,34 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ERouterFlows, ERouterScreens } from '../../../shared/types/router.types';
-import HomeTabVolunteerOptions from '../../tab/volunteer/homeTab.Volunteer';
+import HomeTabOptions from '../../tab/homeTab';
 import HomeActionsFlow from './homeActions.flow';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeTasksFlow from './homeTasks.flow';
 import AppDrawer from '../../../components/organisms/AppDrawer/appDrawer';
 import HomeWalletFlow from './homeWallet.flow';
+import useRole from '../../../shared/hooks/useRole.hook';
+import CreateActionScreen from '../../../components/Screens/CreateActionScreen/createActionScreen';
+import HomeCreateActionFlow from './homeCreateAction.flow';
 
 const HomeFlowBottomTab = createBottomTabNavigator();
 const HomeFlowDrawer = createDrawerNavigator();
 
 const HomeTabFlow = () => {
+
+  const { isVolunteer, isNgo } = useRole();
+
   return (
     <HomeFlowBottomTab.Navigator
-      initialRouteName={ERouterScreens.ActionsScreen}
-      screenOptions={HomeTabVolunteerOptions.screenOptions}
-      tabBarOptions={HomeTabVolunteerOptions.tabBarOptions}
+      screenOptions={HomeTabOptions.screenOptions}
+      tabBarOptions={HomeTabOptions.tabBarOptions}
     >
-      <HomeFlowBottomTab.Screen name={ERouterFlows.HomeActionsFlow} component={HomeActionsFlow} />
-      <HomeFlowBottomTab.Screen name={ERouterFlows.HomeTasksFlow} component={HomeTasksFlow} />
-      <HomeFlowBottomTab.Screen name={ERouterFlows.HomeWalletFlow} component={HomeWalletFlow} />
+      { isVolunteer && <HomeFlowBottomTab.Screen name={ERouterFlows.HomeActionsFlow} component={HomeActionsFlow}/> }
+      { isVolunteer && <HomeFlowBottomTab.Screen name={ERouterFlows.HomeTasksFlow} component={HomeTasksFlow} /> }
+      { isVolunteer && <HomeFlowBottomTab.Screen name={ERouterFlows.HomeWalletFlow} component={HomeWalletFlow} /> }
+
+      { isNgo && <HomeFlowBottomTab.Screen name={ERouterFlows.HomeActionsFlow} component={HomeActionsFlow} /> }
+      { isNgo && <HomeFlowBottomTab.Screen name={ERouterFlows.HomeCreateActionFlow} component={HomeCreateActionFlow} /> }
     </HomeFlowBottomTab.Navigator>
   )
 }

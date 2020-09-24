@@ -16,11 +16,11 @@ const initialState: IAuthReduxReducerState = {
     phoneNumber: '+6148755487',
     profession: 'Student',
     birthDateTimestamp: moment('20-05-1997', 'DD-MM-YYYY').unix(),
-    role: EUserRoles.VOLUNTEER,
+    role: EUserRoles.NGO,
     documentType: EDocumentType.ID
   },
-  isVerified: false,
-  isAuthenticated: false
+  isVerified: true,
+  isAuthenticated: true
 }
 
 const AuthReduxReducer: Reducer<IAuthReduxReducerState, AuthReduxActions> = (state = initialState, action) => {

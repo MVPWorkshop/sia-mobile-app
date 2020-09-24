@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.WHITE,
     borderWidth: 1,
     borderColor: colors.GRAY_LIGHTER,
-    borderRadius: 12
+    borderRadius: 12,
+
   }
 })
 

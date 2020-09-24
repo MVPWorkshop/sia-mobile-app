@@ -21,5 +21,5 @@ export interface IUser {
   phoneNumber?: string;
   birthDateTimestamp?: number;
   documentType?: EDocumentType;
-  role?: EUserRoles;
+  role: EUserRoles;
 }

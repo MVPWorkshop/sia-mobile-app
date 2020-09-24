@@ -17,6 +17,12 @@ const useForm = <Keys extends string = string>(inputs: IInput<Keys>[]) => {
   );
   const [isFormValid, setIsFormValid] = useState<boolean>(true);
 
+  const resetForm = () => {
+    setFormState(
+      arrayToObjectsByKey(inputs, 'inputName') as unknown as DynamicObject<IInput, Keys, AllKeysRequired>
+    )
+  }
+
   const updateInput = (data: {name: string, value: any}) => {
     const {name, value} = data;
 
@@ -71,7 +77,8 @@ const useForm = <Keys extends string = string>(inputs: IInput<Keys>[]) => {
   return {
     updateInput,
     isFormValid,
-    formState
+    formState,
+    resetForm
   }
 }
 

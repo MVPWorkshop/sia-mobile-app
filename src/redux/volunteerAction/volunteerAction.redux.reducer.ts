@@ -63,8 +63,8 @@ const VolunteerActionReduxReducer: Reducer<IVolunteerActionReduxReducerState, Vo
       return {
         ...state,
         actions: [
+          action.payload.action,
           ...state.actions,
-          action.payload.action
         ]
       }
     }

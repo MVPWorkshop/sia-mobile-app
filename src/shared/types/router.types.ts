@@ -9,7 +9,8 @@ export enum ERouterFlows {
   HomeFlow = 'HomeFlow',
   HomeActionsFlow = 'HomeActionsFlow',
   HomeTasksFlow = 'HomeTasksFlow',
-  HomeWalletFlow = 'HomeWalletFlow'
+  HomeWalletFlow = 'HomeWalletFlow',
+  HomeCreateActionFlow = 'HomeCreateActionFlow'
 }
 
 export enum ERouterScreens {
@@ -25,6 +26,7 @@ export enum ERouterScreens {
   AccountDetailsScreen = 'AccountDetailsScreen',
   CouponsScreen = 'CouponsScreen',
   RoleSelectScreen = 'RoleSelectScreen',
+  CreateActionScreen = 'CreateActionScreen'
 }
 
 export type RouteName = ERouterFlows | ERouterScreens;
@@ -75,6 +77,9 @@ export type IRouteParams = {
         [ERouterScreens.WalletScreen]: undefined;
         [ERouterScreens.CouponsScreen]: undefined;
       }>;
+      [ERouterFlows.HomeCreateActionFlow]: NestedNavigatorParams<{
+        [ERouterScreens.CreateActionScreen]: undefined;
+      }>
     }>;
   }>;
   [ERouterScreens.VerifyAccountScreen]: {
@@ -93,6 +98,7 @@ export declare namespace RouterScreenProps {
   // Actions
   interface IActionsScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
   interface IActionDetailsScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
+  interface ICreateActionScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
 
   // Tasks
   interface ITaskDetailsScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}

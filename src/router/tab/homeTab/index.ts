@@ -1,11 +1,10 @@
-import { ERouterFlows, ERouterScreens } from '../../../shared/types/router.types';
-import { TabIconNameMap, TabLabelMap, TabScreenOptions } from '../tabOptions.types';
-import { getTabBarIcon, getTabBarLabel } from '../tabOptions.util';
 import { BottomTabBarOptions } from '@react-navigation/bottom-tabs';
 import { accentColor } from '../../../shared/styles/variables.styles';
+import { TabIconNameMap, TabLabelMap, TabScreenOptions } from '../tabOptions.types';
+import { ERouterFlows, ERouterScreens } from '../../../shared/types/router.types';
+import { getTabBarIcon, getTabBarLabel } from '../tabOptions.util';
 
-class HomeTabVolunteerOptions {
-
+class HomeTabOptions {
   private static _tabIcons: TabIconNameMap = {
     [ERouterFlows.HomeActionsFlow]: {
       focused: {
@@ -36,22 +35,32 @@ class HomeTabVolunteerOptions {
         iconType: 'material-community',
         iconName: 'wallet-outline'
       }
+    },
+    [ERouterFlows.HomeCreateActionFlow]: {
+      focused: {
+        iconType: 'antdesign',
+        iconName: 'pluscircle'
+      },
+      idle: {
+        iconType: 'antdesign',
+        iconName: 'pluscircleo'
+      }
     }
   }
 
   private static _tabLabels: TabLabelMap = {
     [ERouterFlows.HomeActionsFlow]: 'Actions',
     [ERouterFlows.HomeTasksFlow]: 'Tasks',
-    [ERouterFlows.HomeWalletFlow]: 'Wallet'
-
+    [ERouterFlows.HomeWalletFlow]: 'Wallet',
+    [ERouterFlows.HomeCreateActionFlow]: 'Create',
   }
 
   public static screenOptions: TabScreenOptions = ({route}) => {
     const routeName = route.name as ERouterScreens;
 
     return {
-      tabBarIcon: getTabBarIcon(HomeTabVolunteerOptions._tabIcons, routeName),
-      tabBarLabel: getTabBarLabel(HomeTabVolunteerOptions._tabLabels, routeName),
+      tabBarIcon: getTabBarIcon(HomeTabOptions._tabIcons, routeName),
+      tabBarLabel: getTabBarLabel(HomeTabOptions._tabLabels, routeName),
 
     }
   }
@@ -68,4 +77,4 @@ class HomeTabVolunteerOptions {
   }
 }
 
-export default HomeTabVolunteerOptions;
+export default HomeTabOptions;

@@ -17,7 +17,9 @@ const TextInput: React.FC<ITextInputProps> = (props) => {
     blurOnSubmit,
     returnKeyType,
     secureTextEntry,
-    multiline
+    multiline,
+    leftIcon,
+    rightIcon
   } = props;
 
   const inputRef = useRef<RNEInput>(null);
@@ -53,6 +55,8 @@ const TextInput: React.FC<ITextInputProps> = (props) => {
       returnKeyType={returnKeyType}
       secureTextEntry={secureTextEntry}
       multiline={multiline}
+      leftIcon={leftIcon}
+      rightIcon={rightIcon}
     />
   )
 }

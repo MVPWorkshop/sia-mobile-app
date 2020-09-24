@@ -1,5 +1,5 @@
 import { onInputChange } from '../../../shared/types/input.types';
-import { Input as RNEInput, InputProps as RNEInputProps } from 'react-native-elements';
+import { IconNode, Input as RNEInput, InputProps as RNEInputProps } from 'react-native-elements';
 import { StyleProp, ViewStyle } from 'react-native';
 
 export interface ITextInputProps {
@@ -17,4 +17,7 @@ export interface ITextInputProps {
   onRefChange?: (ref: RNEInput) => void;
   containerStyle?: StyleProp<ViewStyle>;
   multiline?: boolean;
+  leftIcon?: IconNode;
+  rightIcon?: IconNode;
+  height?: number;
 }

@@ -60,14 +60,9 @@ const RegisterScreen: React.FC<RouterScreenProps.IRegisterScreenProps> = (props)
     }))
     dispatch(toggleIsAuthenticated(true))
 
+    // @ts-ignore
     props.navigation.replace(ERouterFlows.HomeDrawer, {
-      screen: ERouterFlows.HomeFlow,
-      params: {
-        screen: ERouterFlows.HomeActionsFlow,
-        params: {
-          screen: ERouterScreens.ActionsScreen
-        }
-      }
+      screen: ERouterFlows.HomeFlow
     })
   }
 
