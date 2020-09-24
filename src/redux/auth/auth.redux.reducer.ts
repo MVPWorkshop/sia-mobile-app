@@ -16,10 +16,10 @@ const initialState: IAuthReduxReducerState = {
     phoneNumber: '+6148755487',
     profession: 'Student',
     birthDateTimestamp: moment('20-05-1997', 'DD-MM-YYYY').unix(),
-    role: EUserRoles.NGO,
+    role: EUserRoles.VOLUNTEER,
     documentType: EDocumentType.ID
   },
-  isVerified: true,
+  isVerified: false,
   isAuthenticated: true
 }
 

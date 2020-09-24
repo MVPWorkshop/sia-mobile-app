@@ -76,7 +76,7 @@ const WalletScreen: React.FC<RouterScreenProps.IWalletScreenProps> = () => {
           My Coupons
         </Typography>
       </View>
-      <UserCoupons/>
+      <UserCoupons onlyClaimed={true}/>
       <View style={mb(4)}>
         <Typography fontFamily={EPoppins.SemiBold} fontSize={24}>
           Contact Support

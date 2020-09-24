@@ -65,7 +65,7 @@ const ActionsScreen: React.FC<RouterScreenProps.IActionsScreenProps> = (props) =
       <ProtectedComponent allowedRoles={[EUserRoles.VOLUNTEER]}>
         {renderActiveActions()}
       </ProtectedComponent>
-      <ProtectedComponent allowedRoles={[EUserRoles.NGO]}>
+      <ProtectedComponent allowedRoles={[EUserRoles.NGO, EUserRoles.BENEFICIARY]}>
         <Tabs defaultSelectedTab={ENgoActionsScreenTabs.ACTIVE}>
           <Tab
             name={ENgoActionsScreenTabs.ACTIVE}

@@ -70,6 +70,24 @@ const RoleSelectScreen: React.FC<RouterScreenProps.ISelectRoleScreenProps> = (pr
         />
       </Button>
 
+      <Divider/>
+
+      <Button
+        onClick={onRoleSelect(EUserRoles.BENEFICIARY)}
+        extend={true}
+        type={EButtonType.FLAT}
+      >
+        <Image source={Images.beneficiaryIcon} />
+        <Typography style={{flex: 1, textAlign: 'center'}} fontSize={20}>
+          I'm an Beneficiary
+        </Typography>
+        <Icon
+          name={'arrow-right'}
+          type={'feather'}
+          color={getColor(EColors.BLUE)}
+        />
+      </Button>
+
     </ScreenLayout>
   )
 }

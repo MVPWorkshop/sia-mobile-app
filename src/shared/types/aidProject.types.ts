@@ -41,6 +41,8 @@ interface IVolunteerTaskBase {
   description: string;
   startDateTimestamp: number;
   endDateTimestamp: number;
+  timeHours: number;
+  timeMinutes: number;
   durationMinutes: number;
   addressNumber: string;
   requirements: string;

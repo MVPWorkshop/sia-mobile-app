@@ -28,6 +28,8 @@ const initialState: IVolunteerTaskReduxReducerState = {
       status: EVolunteerTaskStatus.APPLIED,
       updates: [],
       isValidated: true,
+      timeHours: 8,
+      timeMinutes: 30,
       volunteers: [
         {
           name: 'Marko Markovic',
@@ -64,6 +66,8 @@ const initialState: IVolunteerTaskReduxReducerState = {
       status: EVolunteerTaskStatus.NEUTRAL,
       updates: [],
       isValidated: true,
+      timeHours: 6,
+      timeMinutes: 0,
       volunteers: [
         {
           name: 'Marko Markovic',
@@ -100,6 +104,8 @@ const initialState: IVolunteerTaskReduxReducerState = {
       status: EVolunteerTaskStatus.CANCELLED,
       updates: [],
       isValidated: true,
+      timeHours: 18,
+      timeMinutes: 30,
       volunteers: [
         {
           name: 'Marko Markovic',
@@ -136,6 +142,8 @@ const initialState: IVolunteerTaskReduxReducerState = {
       status: EVolunteerTaskStatus.UNFINISHED,
       updates: [],
       isValidated: false,
+      timeHours: 12,
+      timeMinutes: 15,
       volunteers: [
         {
           name: 'Nina Nenadovic',

@@ -237,7 +237,7 @@ const ActionDetailsScreen: React.FC<RouterScreenProps.IActionDetailsScreenProps>
       <SocialShareButtons/>
       <Divider />
 
-      <ProtectedComponent allowedRoles={[EUserRoles.NGO]}>
+      <ProtectedComponent allowedRoles={[EUserRoles.NGO, EUserRoles.BENEFICIARY]}>
         <View style={[mb(2), {alignSelf: 'stretch'}]}>
           <Typography fontSize={14} color={EColors.GRAY_DARKEST}>
             RESULTS
@@ -247,7 +247,7 @@ const ActionDetailsScreen: React.FC<RouterScreenProps.IActionDetailsScreenProps>
         <Divider/>
       </ProtectedComponent>
 
-      <ProtectedComponent allowedRoles={[EUserRoles.NGO]}>
+      <ProtectedComponent allowedRoles={[EUserRoles.NGO, EUserRoles.BENEFICIARY]}>
         <View style={[mb(2), {alignSelf: 'stretch'}]}>
           <Typography fontSize={14} color={EColors.GRAY_DARKEST}>
             VOLUNTEERS
@@ -284,7 +284,7 @@ const ActionDetailsScreen: React.FC<RouterScreenProps.IActionDetailsScreenProps>
         <Divider/>
       </ProtectedComponent>
 
-      <ProtectedComponent allowedRoles={[EUserRoles.NGO]}>
+      <ProtectedComponent allowedRoles={[EUserRoles.NGO, EUserRoles.BENEFICIARY]}>
         <Typography fontSize={14} color={EColors.GRAY_DARKEST}>
           TOTAL REWARD
         </Typography>
@@ -318,7 +318,7 @@ const ActionDetailsScreen: React.FC<RouterScreenProps.IActionDetailsScreenProps>
             </Fragment>: null
           }
 
-          <ProtectedComponent allowedRoles={[EUserRoles.NGO]}>
+          <ProtectedComponent allowedRoles={[EUserRoles.NGO, EUserRoles.BENEFICIARY]}>
             <Button
               onClick={openTaskCreationForm}
               style={[mb(2), mt(4)]}

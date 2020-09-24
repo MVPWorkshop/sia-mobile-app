@@ -9,7 +9,7 @@ import { colors, EColors } from '../../../shared/styles/variables.styles';
 import { Image, View } from 'react-native';
 import { EPoppins } from '../../../shared/hooks/usePoppins.hook';
 import { Icon } from 'react-native-elements';
-import { getColor } from '../../../shared/utils/common.util';
+import { getColor, padNumber } from '../../../shared/utils/common.util';
 import { mb } from '../../../shared/styles/util.styles';
 import Divider from '../../atoms/Divider/divider';
 import ChipGroup from '../../molecules/ChipGroup/chipGroup';
@@ -47,7 +47,16 @@ const TaskDetailsScreen: React.FC<RouterScreenProps.ITaskDetailsScreenProps> = (
   }
 
   const startDate = moment.unix(task.startDateTimestamp);
-  // const endDate = moment.unix(task.endDateTimestamp);
+  const endDate = moment.unix(task.endDateTimestamp);
+
+  let dateChipText: string[] = [];
+  if (startDate.month() === endDate.month()) {
+    dateChipText.push(`${startDate.date()} - ${endDate.date()}`);
+    dateChipText.push(startDate.format('MMMM'))
+  } else {
+    dateChipText.push(`${startDate.day()}, ${startDate.format('MMMM')} -`);
+    dateChipText.push(`${endDate.day()}, ${endDate.format('MMMM')}`);
+  }
 
   const isAppliedToTask =
     task.status === EVolunteerTaskStatus.APPLIED
@@ -179,12 +188,7 @@ const TaskDetailsScreen: React.FC<RouterScreenProps.ITaskDetailsScreenProps> = (
             type: 'feather',
             color: colors.GREEN
           }}
-          body={{
-            text: [
-              'Date',
-              startDate.format('DD MMM YYYY')
-            ].join('\n')
-          }}
+          body={{ text: dateChipText.join('\n') }}
         />
       </ChipGroup>
       <Divider/>
@@ -205,7 +209,7 @@ const TaskDetailsScreen: React.FC<RouterScreenProps.ITaskDetailsScreenProps> = (
             type: 'feather'
           }}
           header={{text: 'TIME'}}
-          body={{text: startDate.format('H:mm') + 'h'}}
+          body={{text: `${padNumber(task.timeHours)}:${padNumber(task.timeMinutes)}`}}
         />
       </ChipGroup>
       <ProtectedComponent allowedRoles={[EUserRoles.VOLUNTEER]}>

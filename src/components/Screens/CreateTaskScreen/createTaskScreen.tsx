@@ -19,7 +19,7 @@ import Button from '../../atoms/Button/button';
 import { EVolunteerTaskStatus, IVolunteerTask } from '../../../shared/types/aidProject.types';
 import uuid from 'v4-uuid';
 import moment from 'moment';
-import { addVolunteerTask, createNewTask } from '../../../redux/volunteerTask/volunteerTask.redux.actions';
+import { createNewTask } from '../../../redux/volunteerTask/volunteerTask.redux.actions';
 
 const CreateTaskScreen: React.FC<RouterScreenProps.ICreateTaskScreenProps> = (props) => {
 
@@ -35,6 +35,8 @@ const CreateTaskScreen: React.FC<RouterScreenProps.ICreateTaskScreenProps> = (pr
       volunteers: [],
       status: EVolunteerTaskStatus.NEUTRAL,
       durationMinutes: (Number(formState.durationHours.value) * 60) + Number(formState.durationMinutes.value),
+      timeHours: formState.durationHours.value,
+      timeMinutes: formState.durationMinutes.value,
       updates: [],
       requirements: formState.requirements.value,
       name: formState.name.value,

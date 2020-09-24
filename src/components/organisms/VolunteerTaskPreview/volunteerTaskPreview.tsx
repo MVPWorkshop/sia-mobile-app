@@ -26,7 +26,7 @@ type MetadataReturnType = {
     btn: string;
   }
 }
-function getMetadataByTaskStatus(status: EVolunteerTaskStatus, isNgo: boolean, isValidated: boolean): MetadataReturnType {
+function getMetadataByTaskStatus(status: EVolunteerTaskStatus, isNgoOrBeneficiary: boolean, isValidated: boolean): MetadataReturnType {
   let normalColor: string;
   let lightColor: string;
   let btnLabel: string;
@@ -64,7 +64,7 @@ function getMetadataByTaskStatus(status: EVolunteerTaskStatus, isNgo: boolean, i
     }
   }
 
-  if (isNgo && status !== EVolunteerTaskStatus.CANCELLED) {
+  if (isNgoOrBeneficiary && status !== EVolunteerTaskStatus.CANCELLED) {
     if (isValidated) {
       btnLabel = 'VALIDATED'
       normalColor = getColor(EColors.GREEN);
@@ -96,10 +96,10 @@ const VolunteerTaskPreview: React.FC<IVolunteerTaskPreviewProps> = (props) => {
     showProjectLabel
   } = props;
 
-  const { isNgo } = useRole();
+  const { isNgo, isBeneficiary } = useRole();
   const dispatch = useDispatch();
 
-  const metadata = getMetadataByTaskStatus(task.status, isNgo, task.isValidated);
+  const metadata = getMetadataByTaskStatus(task.status, isNgo || isBeneficiary, task.isValidated);
   const colorTheme = metadata.colors;
   const styles = stylesFactory(colorTheme.normal);
 
@@ -179,7 +179,7 @@ const VolunteerTaskPreview: React.FC<IVolunteerTaskPreviewProps> = (props) => {
             {task.description}
           </Typography>
           {
-            isNgo ?
+            (isNgo || isBeneficiary) ?
               <Button
                 onClick={validateTask}
                 disabled={task.isValidated || task.status === EVolunteerTaskStatus.CANCELLED}

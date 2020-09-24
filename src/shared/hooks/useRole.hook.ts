@@ -10,6 +10,7 @@ const useRole = (params?: {
 
   const isNgo = currentUserRole === EUserRoles.NGO;
   const isVolunteer = currentUserRole === EUserRoles.VOLUNTEER;
+  const isBeneficiary = currentUserRole === EUserRoles.BENEFICIARY;
 
   let isRoleAllowed = true;
   if (params) {
@@ -19,6 +20,7 @@ const useRole = (params?: {
   return {
     isNgo,
     isVolunteer,
+    isBeneficiary,
     currentUserRole,
     isRoleAllowed
   }

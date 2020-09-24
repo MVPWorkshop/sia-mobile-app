@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { ERouterFlows, ERouterScreens } from '../../../shared/types/router.types';
+import { ERouterFlows } from '../../../shared/types/router.types';
 import HomeTabOptions from '../../tab/homeTab';
 import HomeActionsFlow from './homeActions.flow';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -8,7 +8,6 @@ import HomeTasksFlow from './homeTasks.flow';
 import AppDrawer from '../../../components/organisms/AppDrawer/appDrawer';
 import HomeWalletFlow from './homeWallet.flow';
 import useRole from '../../../shared/hooks/useRole.hook';
-import CreateActionScreen from '../../../components/Screens/CreateActionScreen/createActionScreen';
 import HomeCreateActionFlow from './homeCreateAction.flow';
 
 const HomeFlowBottomTab = createBottomTabNavigator();
@@ -16,7 +15,7 @@ const HomeFlowDrawer = createDrawerNavigator();
 
 const HomeTabFlow = () => {
 
-  const { isVolunteer, isNgo } = useRole();
+  const { isVolunteer, isNgo, isBeneficiary } = useRole();
 
   return (
     <HomeFlowBottomTab.Navigator
@@ -27,8 +26,8 @@ const HomeTabFlow = () => {
       { isVolunteer && <HomeFlowBottomTab.Screen name={ERouterFlows.HomeTasksFlow} component={HomeTasksFlow} /> }
       { isVolunteer && <HomeFlowBottomTab.Screen name={ERouterFlows.HomeWalletFlow} component={HomeWalletFlow} /> }
 
-      { isNgo && <HomeFlowBottomTab.Screen name={ERouterFlows.HomeActionsFlow} component={HomeActionsFlow} /> }
-      { isNgo && <HomeFlowBottomTab.Screen name={ERouterFlows.HomeCreateActionFlow} component={HomeCreateActionFlow} /> }
+      { (isNgo || isBeneficiary) && <HomeFlowBottomTab.Screen name={ERouterFlows.HomeActionsFlow} component={HomeActionsFlow} /> }
+      { (isNgo || isBeneficiary) && <HomeFlowBottomTab.Screen name={ERouterFlows.HomeCreateActionFlow} component={HomeCreateActionFlow} /> }
     </HomeFlowBottomTab.Navigator>
   )
 }
