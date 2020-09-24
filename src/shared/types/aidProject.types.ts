@@ -28,6 +28,12 @@ export enum EVolunteerTaskStatus {
   UNFINISHED = 'UNFINISHED'
 }
 
+export interface IVolunteer {
+  id: string;
+  name: string;
+  image: number
+}
+
 interface IVolunteerTaskBase {
   id: string;
   actionId: string;
@@ -40,6 +46,9 @@ interface IVolunteerTaskBase {
   requirements: string;
   updates: string[];
   status: EVolunteerTaskStatus;
+  isValidated: boolean;
+  volunteers: IVolunteer[];
+  reward: number;
 }
 interface IVolunteerTaskTaken extends IVolunteerTaskBase{
   status:

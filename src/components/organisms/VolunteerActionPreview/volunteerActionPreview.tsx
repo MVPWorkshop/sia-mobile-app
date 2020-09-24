@@ -13,6 +13,7 @@ import Circle from '../../atoms/Circle/circle';
 import Button from '../../atoms/Button/button';
 import { EButtonType } from '../../atoms/Button/button.types';
 import ChipGroup from '../../molecules/ChipGroup/chipGroup';
+import { EVolunteerActionStatus } from '../../../shared/types/aidProject.types';
 
 const VolunteerActionPreview: React.FC<IVolunteerActionPreviewProps> = (props) => {
 
@@ -26,8 +27,11 @@ const VolunteerActionPreview: React.FC<IVolunteerActionPreviewProps> = (props) =
     isRecurring,
     startDateTimestamp,
     endDateTimestamp,
-    tasks
+    tasks,
+    status
   } = props.action;
+
+  const isCanceled = status === EVolunteerActionStatus.CANCELLED;
 
   return (
     <View style={[styles.volunteerActionPreview, props.style]}>
@@ -81,9 +85,13 @@ const VolunteerActionPreview: React.FC<IVolunteerActionPreviewProps> = (props) =
         </View>
       </Button>
       <View style={styles.taskCountContainer}>
-        <Circle style={mr(3)}/>
+        {!isCanceled ? <Circle style={mr(3)}/> : null}
         <Typography>
-          {tasks.length} Active Tasks
+          {
+            isCanceled ?
+              'CANCELLED' :
+              `${tasks.length} Active tasks`
+          }
         </Typography>
       </View>
     </View>

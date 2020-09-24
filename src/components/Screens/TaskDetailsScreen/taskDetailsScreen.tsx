@@ -21,6 +21,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateVolunteerTask } from '../../../redux/volunteerTask/volunteerTask.redux.actions';
 import { EButtonType } from '../../atoms/Button/button.types';
 import { RootState } from '../../../redux/redux.types';
+import ProtectedComponent from '../../atoms/ProtectedComponent/protectedComponent';
+import { EUserRoles } from '../../../shared/types/user.types';
 
 const TaskDetailsScreen: React.FC<RouterScreenProps.ITaskDetailsScreenProps> = (props) => {
 
@@ -60,7 +62,7 @@ const TaskDetailsScreen: React.FC<RouterScreenProps.ITaskDetailsScreenProps> = (
     })
   }
 
-  const cancelTask = () => {
+  const cancelParticipation = () => {
     dispatch(updateVolunteerTask(task.id, {
       status: EVolunteerTaskStatus.NEUTRAL
     }))
@@ -72,6 +74,20 @@ const TaskDetailsScreen: React.FC<RouterScreenProps.ITaskDetailsScreenProps> = (
       status: EVolunteerTaskStatus.APPLIED
     }))
     navigation.goBack()
+  }
+
+  const validateTask = () => {
+    dispatch(updateVolunteerTask(task.id, {
+      isValidated: true
+    }))
+    navigation.goBack()
+  }
+
+  const cancelTask = () => {
+    dispatch(updateVolunteerTask(task.id, {
+      status: EVolunteerTaskStatus.CANCELLED
+    }))
+    navigation.goBack();
   }
 
   return (
@@ -192,52 +208,81 @@ const TaskDetailsScreen: React.FC<RouterScreenProps.ITaskDetailsScreenProps> = (
           body={{text: startDate.format('H:mm') + 'h'}}
         />
       </ChipGroup>
-      {isAppliedToTask ?
-        <Fragment>
-          <Divider/>
-          <Typography
-            style={{
-              alignSelf: 'center',
-              maxWidth: 280,
-              textAlign: 'center',
-              marginBottom: 32
-            }}
-            fontSize={15}
-          >
-            Short description why you need the QR code, how to use it and when.
-          </Typography>
-          <View style={{alignSelf: 'stretch', alignItems: 'center'}}>
-            <Image
-              source={Images.qrCode}
-              height={132}
-              width={132}
-              resizeMode={'contain'}
-              style={{marginBottom: 40}}
-            />
-            <Button onClick={finishTask} style={mb(2)} extend={true}>
+      <ProtectedComponent allowedRoles={[EUserRoles.VOLUNTEER]}>
+        {isAppliedToTask ?
+          <Fragment>
+            <Divider/>
+            <Typography
+              style={{
+                alignSelf: 'center',
+                maxWidth: 280,
+                textAlign: 'center',
+                marginBottom: 32
+              }}
+              fontSize={15}
+            >
+              Beneficiary can scan a unique QR code to confirm that certain volunteer finished the task.
+            </Typography>
+            <View style={{alignSelf: 'stretch', alignItems: 'center'}}>
+              <Image
+                source={Images.qrCode}
+                height={132}
+                width={132}
+                resizeMode={'contain'}
+                style={{marginBottom: 40}}
+              />
+              <Button
+                onClick={finishTask}
+                style={mb(2)} extend={true}
+              >
+                <Typography fontFamily={EPoppins.SemiBold} fontSize={20} color={'white'}>
+                  FINISH THE TASK
+                </Typography>
+              </Button>
+              <Button
+                onClick={cancelParticipation}
+                type={EButtonType.FLAT}
+                extend={true}
+              >
+                Cancel Participation
+              </Button>
+            </View>
+          </Fragment> : null
+        }
+        { isNeutral ?
+          <Fragment>
+            <Divider/>
+            <Button onClick={applyTask} style={mb(2)} extend={true}>
               <Typography fontFamily={EPoppins.SemiBold} fontSize={20} color={'white'}>
-                FINISH THE TASK
+                APPLY
               </Typography>
             </Button>
-            <Button
-              onClick={cancelTask}
-              type={EButtonType.FLAT}
-              extend={true}
-            >
-              Cancel Participation
-            </Button>
-          </View>
-        </Fragment> : null
-      }
-      { isNeutral ?
-        <Fragment>
-          <Divider/>
-          <Button onClick={applyTask} style={mb(2)} extend={true}>
-            <Typography fontFamily={EPoppins.SemiBold} fontSize={20} color={'white'}>
-              APPLY
-            </Typography>
+          </Fragment> : null
+        }
+      </ProtectedComponent>
+
+
+      { task.status !== EVolunteerTaskStatus.CANCELLED ?
+        <ProtectedComponent allowedRoles={[EUserRoles.NGO]}>
+          {
+            !task.isValidated ?
+              <Button
+                onClick={validateTask}
+                style={mb(2)} extend={true}
+              >
+                <Typography fontFamily={EPoppins.SemiBold} fontSize={20} color={'white'}>
+                  VALIDATE THE TASK
+                </Typography>
+              </Button> : null
+          }
+          <Button
+            onClick={cancelTask}
+            type={EButtonType.FLAT}
+            extend={true}
+          >
+            Cancel Task
           </Button>
-        </Fragment> : null
+        </ProtectedComponent> : null
       }
     </ScreenLayout>
   )

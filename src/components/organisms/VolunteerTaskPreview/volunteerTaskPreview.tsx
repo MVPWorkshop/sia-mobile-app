@@ -15,6 +15,7 @@ import Button from '../../atoms/Button/button';
 import { EButtonType } from '../../atoms/Button/button.types';
 import { useDispatch } from 'react-redux';
 import { updateVolunteerTask } from '../../../redux/volunteerTask/volunteerTask.redux.actions';
+import useRole from '../../../shared/hooks/useRole.hook';
 
 type MetadataReturnType = {
   colors: {
@@ -25,7 +26,7 @@ type MetadataReturnType = {
     btn: string;
   }
 }
-function getMetadataByTaskStatus(status: EVolunteerTaskStatus): MetadataReturnType {
+function getMetadataByTaskStatus(status: EVolunteerTaskStatus, isNgo: boolean, isValidated: boolean): MetadataReturnType {
   let normalColor: string;
   let lightColor: string;
   let btnLabel: string;
@@ -63,6 +64,18 @@ function getMetadataByTaskStatus(status: EVolunteerTaskStatus): MetadataReturnTy
     }
   }
 
+  if (isNgo && status !== EVolunteerTaskStatus.CANCELLED) {
+    if (isValidated) {
+      btnLabel = 'VALIDATED'
+      normalColor = getColor(EColors.GREEN);
+      lightColor = getColor(EColors.GREEN_LIGHTER);
+    } else {
+      btnLabel = 'VALIDATE'
+      normalColor = getColor(EColors.BLUE);
+      lightColor = getColor(EColors.BLUE_LIGHTER);
+    }
+  }
+
   return {
     colors: {
       normal: normalColor,
@@ -83,9 +96,10 @@ const VolunteerTaskPreview: React.FC<IVolunteerTaskPreviewProps> = (props) => {
     showProjectLabel
   } = props;
 
+  const { isNgo } = useRole();
   const dispatch = useDispatch();
 
-  const metadata = getMetadataByTaskStatus(task.status);
+  const metadata = getMetadataByTaskStatus(task.status, isNgo, task.isValidated);
   const colorTheme = metadata.colors;
   const styles = stylesFactory(colorTheme.normal);
 
@@ -112,6 +126,12 @@ const VolunteerTaskPreview: React.FC<IVolunteerTaskPreviewProps> = (props) => {
 
     dispatch(updateVolunteerTask(task.id, {
       status: EVolunteerTaskStatus.APPLIED
+    }))
+  }
+
+  const validateTask = () => {
+    dispatch(updateVolunteerTask(task.id, {
+      isValidated: true
     }))
   }
 
@@ -158,24 +178,40 @@ const VolunteerTaskPreview: React.FC<IVolunteerTaskPreviewProps> = (props) => {
           <Typography style={[{flex: 1}]} fontSize={15}>
             {task.description}
           </Typography>
-          <Button
-            onClick={applyToTask}
-            iconRight={isTaskPositive ? {
-              name: 'check',
-              type: 'feather',
-            } : undefined
-            }
-            type={isTaskNeutral ? EButtonType.REGULAR : EButtonType.FLAT}
-            labelColor={!isTaskNeutral ? colorTheme.normal : undefined}
-            disabled={!isTaskNeutral}
-            removePadding={!isTaskNeutral}
-            style={!isTaskNeutral ? mt(4) : mt(2)}
-            labelStyle={{
-              fontFamily: EPoppins.SemiBold
-            }}
-          >
-            {metadata.labels.btn}
-          </Button>
+          {
+            isNgo ?
+              <Button
+                onClick={validateTask}
+                disabled={task.isValidated || task.status === EVolunteerTaskStatus.CANCELLED}
+                type={task.isValidated || task.status === EVolunteerTaskStatus.CANCELLED ? EButtonType.FLAT : EButtonType.REGULAR}
+                removePadding={task.isValidated || task.status === EVolunteerTaskStatus.CANCELLED}
+                iconRight={task.isValidated && task.status !== EVolunteerTaskStatus.CANCELLED ? {
+                  name: 'check',
+                  type: 'feather',
+                } : undefined}
+                style={task.isValidated ? mt(4) : mt(2)}
+              >
+                {metadata.labels.btn}
+              </Button>
+              :
+              <Button
+                onClick={applyToTask}
+                iconRight={isTaskPositive ? {
+                  name: 'check',
+                  type: 'feather',
+                } : undefined}
+                type={isTaskNeutral ? EButtonType.REGULAR : EButtonType.FLAT}
+                labelColor={!isTaskNeutral ? colorTheme.normal : undefined}
+                disabled={!isTaskNeutral}
+                removePadding={!isTaskNeutral}
+                style={!isTaskNeutral ? mt(4) : mt(2)}
+                labelStyle={{
+                  fontFamily: EPoppins.SemiBold
+                }}
+              >
+                {metadata.labels.btn}
+              </Button>
+          }
         </View>
       </Button>
     </View>

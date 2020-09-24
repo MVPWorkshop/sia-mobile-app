@@ -34,6 +34,9 @@ const images = {
   beneficiaryIcon: require('../../../assets/beneficiaryIcon.png'),
   ngoIcon: require('../../../assets/ngoIcon.png'),
 
+  volunteerOne: require('../../../assets/volunteerOne.png'),
+  volunteerTwo: require('../../../assets/volunteerTwo.png'),
+  volunteerThree: require('../../../assets/volunteerThree.png')
 }
 
 export type ImageKeys = keyof typeof images;

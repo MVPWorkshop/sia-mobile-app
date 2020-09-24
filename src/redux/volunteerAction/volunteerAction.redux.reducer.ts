@@ -90,6 +90,23 @@ const VolunteerActionReduxReducer: Reducer<IVolunteerActionReduxReducerState, Vo
         ]
       }
     }
+    case EVolunteerActionReduxActions.UPDATE_VOLUNTEER_ACTION: {
+      const { volunteerAction, volunteerActionId, } = action.payload;
+
+      return  {
+        ...state,
+        actions: state.actions.map(vAction => {
+          if (vAction.id === volunteerActionId) {
+            return {
+              ...vAction,
+              ...volunteerAction
+            }
+          } else {
+            return vAction;
+          }
+        })
+      }
+    }
     default: {
       return state;
     }
