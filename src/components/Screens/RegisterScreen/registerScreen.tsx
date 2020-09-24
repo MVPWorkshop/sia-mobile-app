@@ -136,6 +136,8 @@ const RegisterScreen: React.FC<RouterScreenProps.IRegisterScreenProps> = (props)
               value={formState.password.value}
               onChange={updateInput}
               placeholder={'Your password'}
+              autoCapitalize={'none'}
+              secureTextEntry={true}
               error={formState.password.error?.formattedMessage}
               containerStyle={mb(25)}
             />
