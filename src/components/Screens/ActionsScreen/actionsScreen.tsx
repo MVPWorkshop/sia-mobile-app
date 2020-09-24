@@ -25,7 +25,7 @@ const ActionsScreen: React.FC<RouterScreenProps.IActionsScreenProps> = (props) =
   const openActionDetails = (volunteerAction: IVolunteerAction) => () => {
     // @ts-ignore
     props.navigation.navigate(ERouterScreens.ActionDetailsScreen, {
-      volunteerAction
+      volunteerActionId: volunteerAction.id
     })
   }
 

@@ -37,3 +37,14 @@ export function getColor(color: EColors | EAccents | string) {
     return color;
   }
 }
+
+export function padNumber(num: number): string {
+
+  const number = Math.abs(num);
+
+  if (number < 10) {
+    return `0${number}`
+  } else {
+    return number.toString();
+  }
+}

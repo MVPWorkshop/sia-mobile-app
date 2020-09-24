@@ -28,6 +28,15 @@ import { getColor } from '../../../shared/utils/common.util';
 
 const ActionDetailsScreen: React.FC<RouterScreenProps.IActionDetailsScreenProps> = (props) => {
 
+  const {
+    route,
+    navigation
+  } = props;
+
+  const routeParams = route.params as any;
+  const actionId = routeParams.volunteerActionId as string;
+  const action = useSelector<RootState, IVolunteerAction>(state => state.volunteerAction.actions.filter(action => action.id === actionId)[0])
+
   const dispatch = useDispatch();
   const tasks = useSelector<RootState, RootState['volunteerTask']['tasks']>(
     state => state.volunteerTask.tasks
@@ -56,13 +65,7 @@ const ActionDetailsScreen: React.FC<RouterScreenProps.IActionDetailsScreenProps>
     };
   }
 
-  const {
-    route,
-    navigation
-  } = props;
 
-  const routeParams = route.params as any;
-  const action = routeParams.volunteerAction as IVolunteerAction;
   const { actionVolunteers, actionTotalReward } = getActionTaskData();
 
   if (!action) {
@@ -87,6 +90,16 @@ const ActionDetailsScreen: React.FC<RouterScreenProps.IActionDetailsScreenProps>
       status: EVolunteerActionStatus.CANCELLED
     }))
     navigation.goBack();
+  }
+
+  const openTaskCreationForm = () => {
+    // @ts-ignore
+    navigation.navigate(ERouterFlows.HomeActionsFlow, {
+      screen: ERouterScreens.CreateTaskScreen,
+      params: {
+        actionId: action.id
+      }
+    })
   }
 
   const startDate = moment.unix(action.startDateTimestamp);
@@ -307,8 +320,7 @@ const ActionDetailsScreen: React.FC<RouterScreenProps.IActionDetailsScreenProps>
 
           <ProtectedComponent allowedRoles={[EUserRoles.NGO]}>
             <Button
-              onClick={() => {
-              }}
+              onClick={openTaskCreationForm}
               style={[mb(2), mt(4)]}
               extend={true}
               iconLeft={{

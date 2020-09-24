@@ -26,7 +26,8 @@ export enum ERouterScreens {
   AccountDetailsScreen = 'AccountDetailsScreen',
   CouponsScreen = 'CouponsScreen',
   RoleSelectScreen = 'RoleSelectScreen',
-  CreateActionScreen = 'CreateActionScreen'
+  CreateActionScreen = 'CreateActionScreen',
+  CreateTaskScreen = 'CreateTaskScreen'
 }
 
 export type RouteName = ERouterFlows | ERouterScreens;
@@ -37,20 +38,23 @@ type NestedNavigatorParams<ParamList> = {
     : { screen: K; params: ParamList[K] }
 }[keyof ParamList]
 
-interface IActionDetailsScreenParams {
-  volunteerAction: IVolunteerAction;
+export interface IActionDetailsScreenParams {
+  volunteerActionId: string;
 }
-interface ITaskDetailsScreenParams {
+export interface ITaskDetailsScreenParams {
   volunteerTaskId: string;
   volunteerAction: IVolunteerAction;
   taskName: string;
 }
-interface IFinishTaskScreenParams {
+export interface IFinishTaskScreenParams {
   volunteerTask: IVolunteerTask;
   taskName: string;
 }
+export interface ICreateTaskScreenParams {
+  actionId: string;
+}
 
-interface NextRoute {
+export interface NextRoute {
   routeName: keyof IRouteParams;
   params?: any;
 }
@@ -67,6 +71,7 @@ export type IRouteParams = {
         [ERouterScreens.ActionDetailsScreen]: IActionDetailsScreenParams;
         [ERouterScreens.TaskDetailsScreen]: ITaskDetailsScreenParams;
         [ERouterScreens.FinishTaskScreen]: IFinishTaskScreenParams;
+        [ERouterScreens.CreateTaskScreen]: ICreateTaskScreenParams;
       }>;
       [ERouterFlows.HomeTasksFlow]: NestedNavigatorParams<{
         [ERouterScreens.TasksScreen]: undefined;
@@ -104,6 +109,7 @@ export declare namespace RouterScreenProps {
   interface ITaskDetailsScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
   interface IFinishTaskScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
   interface ITasksScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
+  interface ICreateTaskScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
 
   // Wallet
   interface IWalletScreenProps extends BottomTabScreenProps<IRouteParams, ERouterFlows.HomeDrawer> {}
